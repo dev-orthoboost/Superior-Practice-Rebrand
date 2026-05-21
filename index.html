@@ -186,6 +186,14 @@
         }
         .nav-link:hover::after { transform: scaleX(1); }
 
+        /* Before/After slider */
+        .ba-slider { position: relative; touch-action: none; -webkit-user-select: none; user-select: none; }
+        .ba-slider img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+        .ba-after { transition: clip-path 0.05s linear; }
+        .ba-handle-line { box-shadow: 0 0 0 1px rgba(0,0,0,0.08); }
+        .ba-knob { transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .ba-slider:hover .ba-knob { transform: translate(-50%, -50%) scale(1.08); }
+
         /* Respect users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
             .hero-reveal,
@@ -227,7 +235,7 @@
 <!-- Hero Section -->
 <section id="hero" class="relative pt-12 pb-24 overflow-hidden bg-white">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page relative z-10">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-16 items-center">
 <div class="max-w-2xl">
 <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-navy-50 text-primary font-label-eyebrow text-label-eyebrow uppercase tracking-widest mb-6 border border-navy-100/50 hero-reveal hero-reveal-1">
 <span class="text-secondary font-bold">$99 VALUE</span>
@@ -248,7 +256,7 @@
                         </a>
 </div>
 </div>
-<div class="relative hero-reveal hero-reveal-5">
+<div class="relative hero-reveal hero-reveal-5 lg:max-w-[400px] lg:ml-auto">
 <div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white">
 <img alt="Confident patient smiling" class="w-full h-full object-cover hero-ken-burns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATq_rSynUfBX5Yl4DbeAa3D3hBLKozVwjZxOAq9Z0CbKjx-qZMNvAuXG1JLdxMfXT0GM0ikUoIrdl4FFoNtW4rXMGjz7d1Ycoz8c1hspMfFeNmQt5CBsBDtttYg5qEadCagDAqfkJboP58P-lP9FGX2Csjmyq7WX3Ep-Jw1ifn7MnI_TdPKmHAWagndTJe7TXT6oUWUh65fIXw_8PQnpdkMpDfWw3-8tp9qNDRdN7JOqJ-7Gnj8qPhNlHFqNveySLpnT88gtKjThY">
 </div>
@@ -414,16 +422,58 @@
 </div>
 </div>
 </section>
-<!-- Testimonials Section -->
-<section class="py-24 bg-white opacity-0 animate-fade-in-up">
-<div class="w-full max-w-[1280px] mx-auto px-margin-page">
-<div class="text-center max-w-2xl mx-auto mb-16">
-<h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Patient Stories</h2>
-<p class="text-on-surface-variant text-lg">Join the thousands who trust Superior Orthodontics.</p>
+<!-- Before/After Smile Gallery — ASYMMETRIC FOCAL POINT with interactive slider -->
+<section class="py-24 md:py-32 bg-white relative overflow-hidden opacity-0 animate-fade-in-up">
+<div class="w-full max-w-[1440px] mx-auto px-margin-page">
+<div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-16 items-center">
+<!-- Left column: copy -->
+<div class="max-w-md">
+<span class="inline-block py-1 px-3 bg-secondary/10 text-secondary font-bold text-xs rounded-lg mb-6 uppercase tracking-wider">Real Results</span>
+<h2 class="font-headline-h2 text-headline-h2 text-primary mb-6">See the transformation.</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">Drag the slider to compare real patient smiles before and after their treatment at Superior Orthodontics.</p>
+<a class="inline-flex items-center text-secondary font-bold border-b-2 border-secondary pb-1 hover:gap-3 transition-ease-out gap-1" href="#schedule">
+                    See more transformations
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Review 1 -->
-<div class="bg-navy-50/30 p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
+<!-- Right column: interactive before/after slider (focal point) -->
+<div class="ba-slider relative w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl cursor-ew-resize" data-ba-slider>
+<!-- BEFORE image — PLACEHOLDER: replace with client photo -->
+<img class="ba-before absolute inset-0 w-full h-full object-cover" alt="Before treatment — placeholder image" src="https://placehold.co/1200x900/B2C0D1/143953?text=BEFORE+%E2%80%94+Replace+with+client+photo&font=roboto">
+<!-- AFTER image — PLACEHOLDER: replace with client photo -->
+<img class="ba-after absolute inset-0 w-full h-full object-cover" alt="After treatment — placeholder image" src="https://placehold.co/1200x900/D45C84/FFFFFF?text=AFTER+%E2%80%94+Replace+with+client+photo&font=roboto" style="clip-path: inset(0 50% 0 0);">
+<!-- Labels -->
+<div class="absolute top-5 left-5 bg-white text-primary text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md pointer-events-none">Before</div>
+<div class="absolute top-5 right-5 bg-secondary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md pointer-events-none">After</div>
+<!-- Divider line + draggable knob -->
+<div class="ba-handle absolute top-0 bottom-0 ba-handle-line bg-white pointer-events-none" style="left: 50%; width: 2px; margin-left: -1px;">
+<div class="ba-knob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center ring-4 ring-primary/10">
+<span class="material-symbols-outlined text-primary text-[28px]">drag_handle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials — ASYMMETRIC (heading-left, cards-right) on wider container -->
+<section class="py-24 bg-navy-50/30 opacity-0 animate-fade-in-up">
+<div class="w-full max-w-[1440px] mx-auto px-margin-page">
+<div class="grid grid-cols-1 lg:grid-cols-[4fr_8fr] gap-12 lg:gap-20 items-start">
+<!-- Left column: heading + intro + Google chip -->
+<div class="lg:sticky lg:top-28">
+<span class="inline-block py-1 px-3 bg-secondary/10 text-secondary font-bold text-xs rounded-lg mb-6 uppercase tracking-wider">Real Voices</span>
+<h2 class="font-headline-h2 text-headline-h2 text-primary mb-6">Patient Stories</h2>
+<p class="text-on-surface-variant text-lg mb-8 leading-relaxed">Join the thousands of families who trust Superior Orthodontics with their smiles.</p>
+<div class="inline-flex items-center gap-2 bg-white py-2 px-6 rounded-full border border-navy-100 shadow-sm">
+<img alt="Google" class="h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgZE5F-Qk57Nl9bfTQMQaWlHV68KB5Obn4fyFkUhIdqXpEMD8Zc9rgMkeumxZCbcimaBblAPTx_gSm0Uoeia3t1OH0AmYbw4phdbhfsUniipF-S32GOihsJlk_h-s1V_Alhnrh0SSFKfQRQPbIotMH1rH4Mo6FzBqb3zEcoO8lqGf_Y6MSiZLYdhnZ8Ie5wqSdLiat9J-26kw1FBvACVftX1t5avXTsqw5R0WHZglXqcwxIY-1oZjLQM3jAt3nHnu0DZsskMT7tfU">
+<span class="text-sm font-bold text-primary">5.0 average from 170+ reviews</span>
+</div>
+</div>
+<!-- Right column: featured testimonial spans full width, 2 smaller below -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Review 1 (featured, spans full width on md+) -->
+<div class="bg-white p-10 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card md:col-span-2 relative">
+<span class="material-symbols-outlined text-secondary/30 text-[64px] absolute top-6 right-8 leading-none select-none">format_quote</span>
 <div>
 <div class="flex text-secondary mb-6">
 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -445,7 +495,7 @@
 </div>
 </div>
 <!-- Review 2 -->
-<div class="bg-navy-50/30 p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
+<div class="bg-white p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
 <div>
 <div class="flex text-secondary mb-6">
 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -465,7 +515,7 @@
 </div>
 </div>
 <!-- Review 3 -->
-<div class="bg-navy-50/30 p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
+<div class="bg-white p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
 <div>
 <div class="flex text-secondary mb-6">
 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -485,34 +535,26 @@
 </div>
 </div>
 </div>
-<div class="mt-12 text-center">
-<div class="inline-flex items-center gap-2 bg-navy-50 py-2 px-6 rounded-full border border-navy-100">
-<img alt="Google" class="h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgZE5F-Qk57Nl9bfTQMQaWlHV68KB5Obn4fyFkUhIdqXpEMD8Zc9rgMkeumxZCbcimaBblAPTx_gSm0Uoeia3t1OH0AmYbw4phdbhfsUniipF-S32GOihsJlk_h-s1V_Alhnrh0SSFKfQRQPbIotMH1rH4Mo6FzBqb3zEcoO8lqGf_Y6MSiZLYdhnZ8Ie5wqSdLiat9J-26kw1FBvACVftX1t5avXTsqw5R0WHZglXqcwxIY-1oZjLQM3jAt3nHnu0DZsskMT7tfU">
-<span class="text-sm font-bold text-primary">5.0 Star average from 170+ reviews</span>
-</div>
-</div>
 </div>
 </section>
-<!-- Pricing CTA (Large Navy Block) -->
-<section class="py-24 bg-surface opacity-0 animate-fade-in-up">
-<div class="w-full max-w-[1280px] mx-auto px-margin-page">
-<div class="bg-primary rounded-[40px] p-10 md:p-20 relative overflow-hidden text-center md:text-left">
-<!-- Decorative Circle -->
-<div class="absolute -top-24 -right-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
-<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
-<div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Pricing CTA — FULL-BLEED navy (no inner box, edge-to-edge) -->
+<section class="py-28 md:py-32 bg-primary relative overflow-hidden opacity-0 animate-fade-in-up text-center md:text-left">
+<!-- Decorative blobs anchored to viewport edges -->
+<div class="absolute -top-32 -right-32 w-[28rem] h-[28rem] bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-32 -left-32 w-[28rem] h-[28rem] bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="w-full max-w-[1440px] mx-auto px-margin-page relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <div>
 <h2 class="font-headline-h2 text-headline-h2 text-white mb-6">Expert treatment that fits your monthly budget.</h2>
 <p class="text-navy-100/70 text-lg mb-8 max-w-md mx-auto md:mx-0">Professional orthodontic care shouldn't be out of reach. We offer plans for every family.</p>
-<!-- "$0 Down Options Available" stacked BELOW Schedule Free Exam (Figma update) -->
 <div class="flex flex-col gap-4 items-center md:items-start">
 <a class="inline-flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold text-[17px] hover:brightness-110 hover:-translate-y-1 transition-ease-out shadow-xl shadow-secondary/30" href="#schedule">
-                                Schedule Free Exam
-                            </a>
+                            Schedule Free Exam
+                        </a>
 <div class="flex items-center gap-3 px-6 py-4 rounded-full border border-white/20 text-white font-bold">
 <span class="material-symbols-outlined text-secondary">payment</span>
-                                $0 Down Options Available
-                            </div>
+                            $0 Down Options Available
+                        </div>
 </div>
 </div>
 <div class="bg-white/5 backdrop-blur-sm rounded-[32px] p-10 border border-white/10 text-center">
@@ -525,26 +567,25 @@
 <ul class="space-y-4 text-left max-w-[240px] mx-auto mb-8">
 <li class="flex items-start gap-3 text-white/80 text-sm">
 <span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
-                                $0 Down Payment option
-                            </li>
+                            $0 Down Payment option
+                        </li>
 <li class="flex items-start gap-3 text-white/80 text-sm">
 <span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
-                                Free 3D digital imaging
-                            </li>
+                            Free 3D digital imaging
+                        </li>
 <li class="flex items-start gap-3 text-white/80 text-sm">
 <span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
-                                Most insurance accepted
-                            </li>
+                            Most insurance accepted
+                        </li>
 </ul>
 <p class="text-navy-100/40 text-[10px] uppercase font-bold tracking-tighter">Conditions apply based on treatment needs</p>
-</div>
 </div>
 </div>
 </div>
 </section>
 <!-- Locations Section -->
 <!-- What to Expect Section -->
-<section class="py-24 bg-white opacity-0 animate-fade-in-up">
+<section class="py-24 bg-paper-50 opacity-0 animate-fade-in-up">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-3xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">What to Expect at Your First Visit</h2>
@@ -786,6 +827,28 @@
     }, { threshold: 0.5 });
 
     document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+
+    // Before/After image slider (drag to reveal)
+    document.querySelectorAll('[data-ba-slider]').forEach(slider => {
+        const after = slider.querySelector('.ba-after');
+        const handle = slider.querySelector('.ba-handle');
+        let dragging = false;
+        const setPosition = (clientX) => {
+            const rect = slider.getBoundingClientRect();
+            let pct = ((clientX - rect.left) / rect.width) * 100;
+            pct = Math.max(0, Math.min(100, pct));
+            after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+            handle.style.left = `${pct}%`;
+        };
+        slider.addEventListener('pointerdown', (e) => {
+            dragging = true;
+            slider.setPointerCapture(e.pointerId);
+            setPosition(e.clientX);
+        });
+        slider.addEventListener('pointermove', (e) => { if (dragging) setPosition(e.clientX); });
+        slider.addEventListener('pointerup', (e) => { dragging = false; try { slider.releasePointerCapture(e.pointerId); } catch (_) {} });
+        slider.addEventListener('pointercancel', () => { dragging = false; });
+    });
 </script>
 
 
