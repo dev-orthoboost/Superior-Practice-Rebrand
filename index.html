@@ -4,7 +4,7 @@
 <title>Superior Orthodontics | Expert Care, Straight Answers</title>
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<!-- Design System Fonts: Bricolage Grotesque (Headings) and Plus Jakarta Sans (Body) -->
+<!-- Design System Font: Bricolage Grotesque (variable — used for all text) -->
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -239,120 +239,135 @@
 </nav>
 </header>
 <main>
-<!-- Hero Section -->
-<section id="hero" class="relative pt-12 pb-24 overflow-hidden bg-white">
-<div class="w-full max-w-[1280px] mx-auto px-margin-page relative z-10">
-<div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-16 items-center">
-<div class="max-w-2xl">
-<div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-navy-50 text-primary font-label-eyebrow text-label-eyebrow uppercase tracking-widest mb-6 border border-navy-100/50 hero-reveal hero-reveal-1">
-<span class="text-secondary font-bold">$99 VALUE</span>
-<span class="w-1.5 h-1.5 rounded-full bg-navy-200 hero-dot-pulse"></span>
-                        FREE INITIAL EXAM
-                    </div>
-<h1 class="font-headline-h1-mobile md:font-headline-h1 text-headline-h1-mobile md:text-headline-h1 text-primary mb-6 leading-tight hero-reveal hero-reveal-2">Expert Care.<br>Straight Answers.<br><span class="text-secondary italic">A Smile You'll Love.</span></h1>
-<p class="font-lead text-lead text-on-surface-variant mb-10 max-w-lg hero-reveal hero-reveal-3">
-                        Start your journey to a perfect smile <strong class="text-primary font-bold">from $188/month</strong>. Professional care that fits your life.
-                    </p>
-<div class="flex flex-col sm:flex-row gap-4 hero-reveal hero-reveal-4">
-<a class="inline-flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold text-[17px] hover:brightness-110 hover:-translate-y-1 transition-ease-out group shadow-xl shadow-secondary/30 hover:scale-[1.02] hover:-translate-y-0.5" href="#schedule">
-                            Schedule Your Free Exam
-                            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-ease-out">arrow_forward</span>
-</a>
-<a class="inline-flex items-center justify-center bg-white text-primary px-8 py-4 rounded-full font-semibold text-[17px] border-2 border-navy-100 hover:border-primary hover:bg-navy-50 transition-ease-out group" href="tel:2483134899">
-<span class="material-symbols-outlined mr-2 text-[22px] group-hover:rotate-12 transition-ease-out" style="font-variation-settings: 'FILL' 1;">call</span>
-                            (248) 313-4899
-                        </a>
-</div>
-</div>
-<div class="relative hero-reveal hero-reveal-5 lg:max-w-[400px] lg:ml-auto">
-<div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white">
-<img alt="Confident patient smiling" class="w-full h-full object-cover hero-ken-burns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATq_rSynUfBX5Yl4DbeAa3D3hBLKozVwjZxOAq9Z0CbKjx-qZMNvAuXG1JLdxMfXT0GM0ikUoIrdl4FFoNtW4rXMGjz7d1Ycoz8c1hspMfFeNmQt5CBsBDtttYg5qEadCagDAqfkJboP58P-lP9FGX2Csjmyq7WX3Ep-Jw1ifn7MnI_TdPKmHAWagndTJe7TXT6oUWUh65fIXw_8PQnpdkMpDfWw3-8tp9qNDRdN7JOqJ-7Gnj8qPhNlHFqNveySLpnT88gtKjThY">
-</div>
-<div class="absolute -bottom-6 bg-white p-5 rounded-2xl shadow-xl border border-navy-50 flex items-center gap-4 -left-6 hero-bob">
-<div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-[28px] hero-twinkle" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-<div>
-<p class="font-bold text-primary">5.0 Star Rating</p>
-<p class="text-[13px] text-on-surface-variant font-medium">500+ Patient Reviews</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<!-- Hero Section — type-led, asymmetric -->
+<style>
+/* Hero delight — drifting brand logomark watermark + magnetic CTA shine */
+.hero-mark { position: absolute; top: 50%; left: -6%; transform: translateY(-50%); width: min(58vw, 620px); opacity: 0.09; z-index: 0; pointer-events: none; animation: heroMarkDrift 12s ease-in-out infinite; }
+.hero-content { position: relative; z-index: 1; }
+.hero-cta { position: relative; overflow: hidden; }
+.hero-cta::after { content: ""; position: absolute; top: 0; left: -120%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent); transform: skewX(-18deg); animation: heroCtaShine 3.6s ease-in-out infinite; }
+.hero-photo-panel { background: #143953; }
+@keyframes heroMarkDrift { 0%, 100% { transform: translateY(-50%); } 50% { transform: translateY(-54%); } }
+@keyframes heroCtaShine { 0% { left: -120%; } 60%, 100% { left: 130%; } }
+@media (prefers-reduced-motion: reduce) {
+    .hero-mark, .hero-cta::after { animation: none; }
+}
+</style>
+<section id="hero" class="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden bg-white">
+<svg class="hero-mark" viewBox="-40 -15 310 420" aria-hidden="true"><path d="M230.66,124.98c-.97.27-.7-.25-.95-.53-10.12-11.48-23.07-17.65-36.14-25.11-5.93-27.86-17.81-52.45-46.61-61.77-56.16-18.19-114.58,19.42-113.06,79.71.82,32.68,20.29,44.5,48.87,53.26,53.41,16.36,133.53,16.11,146.09,85.69,9.34,51.73-19.09,103.7-66.7,124.79-62.49,27.68-135.53-5.12-156.3-69.79C-2.95,283.78,1.05,254.66.14,226.28c.96-.24.69.19.95.53,1.74,2.21,3.16,4.79,5.08,6.98,7.37,8.4,17.69,14.1,27.22,19.67.39,7.39-.21,14.84.07,22.23,1.21,31.84,17.33,59.69,46.34,73.72,52.81,25.53,114.84-11.74,117.5-69.99,1.6-34.93-16.9-48.9-47.52-58.36C88.67,202.19,2.7,204.54.57,118.5-2.33,1.16,150.91-44.76,212.91,53.73c13.46,21.38,18.89,46.04,17.75,71.25Z" style="fill:#143953;"/><path d="M93.1,151.24c-11.51-2.72-23.06-6.7-32.84-13.43l-.12-.52c.28-19.74-2.56-37.37,8.61-54.8,28.66-44.7,97.34-26.95,101.91,25.16l-.02,63.17-32.87-9.23-.11-50.54c-1.53-17.96-22.11-27.35-36.41-15.67-4.44,3.63-8.14,10.65-8.14,16.45v39.39Z" style="fill:#D45C84;"/><path d="M137.7,239.62c11.35,3.35,23.04,6.57,32.84,13.43l.13.52c-.66,15.63,2.17,30.95-3.88,45.77-22.13,54.24-102.41,40.79-106.64-16.97l.02-62.34,32.74,9.56.19,48.58c.29,18.19,20.92,29.16,35.81,17.89,4.08-3.09,8.79-10.62,8.79-15.8v-40.64Z" style="fill:#D45C84;"/></svg>
+  <div class="hero-content w-full max-w-[1280px] mx-auto px-margin-page relative z-10">
+  <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-16 items-center">
+  <div class="max-w-3xl">
+  <div class="flex items-center gap-3 mb-7 hero-reveal hero-reveal-1">
+  <div class="flex text-secondary" role="img" aria-label="Rated 5.0 out of 5 stars">
+  <span class="material-symbols-outlined text-[19px] hero-twinkle" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+  <span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+  <span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+  <span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+  <span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+  </div>
+  <span class="text-sm font-bold text-primary">5.0 from 500+ patient reviews</span>
+  </div>
+  <h1 class="font-headline-h1 text-primary mb-6 text-[clamp(2rem,1rem+4.2vw,5.25rem)] leading-[0.98] tracking-[-0.03em] [text-wrap:balance] hero-reveal hero-reveal-2">Expert Care.<br>Straight Answers.<br><span class="text-secondary italic">A Smile You'll Love.</span></h1>
+  <p class="font-lead text-lead text-on-surface-variant mb-8 max-w-xl hero-reveal hero-reveal-3">
+                          Start your journey to a perfect smile <strong class="text-primary font-bold">from $188/month</strong>. Professional care that fits your life.
+                      </p>
+  <div class="flex flex-col sm:flex-row gap-4 hero-reveal hero-reveal-4">
+  <a class="hero-cta inline-flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold text-[17px] hover:brightness-110 transition-ease-out group shadow-xl shadow-secondary/30 hover:scale-[1.02] hover:-translate-y-0.5" href="#schedule">
+                              Schedule Your Free Exam
+                              <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-ease-out">arrow_forward</span>
+  </a>
+  <a class="inline-flex items-center justify-center bg-white text-primary px-8 py-4 rounded-full font-semibold text-[17px] border-2 border-navy-100 hover:border-primary hover:bg-navy-50 transition-ease-out group" href="tel:2483134899">
+  <span class="material-symbols-outlined mr-2 text-[22px] group-hover:rotate-12 transition-ease-out" style="font-variation-settings: 'FILL' 1;">call</span>
+                              (248) 313-4899
+                          </a>
+  </div>
+  <p class="mt-5 flex items-center gap-2 text-sm text-on-surface-variant hero-reveal hero-reveal-4">
+  <span class="w-1.5 h-1.5 rounded-full bg-secondary hero-dot-pulse"></span>
+                          Free initial exam, a $99 value. No obligation.
+                      </p>
+  </div>
+  <div class="relative hero-reveal hero-reveal-5 lg:max-w-[440px] lg:ml-auto">
+  <div class="hero-photo-panel absolute -inset-3 sm:-right-5 sm:-bottom-5 sm:left-6 sm:top-6 rounded-[40px]" aria-hidden="true"></div>
+  <div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl ring-1 ring-white/40">
+  <img alt="Confident patient smiling after orthodontic treatment" class="w-full h-full object-cover hero-ken-burns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATq_rSynUfBX5Yl4DbeAa3D3hBLKozVwjZxOAq9Z0CbKjx-qZMNvAuXG1JLdxMfXT0GM0ikUoIrdl4FFoNtW4rXMGjz7d1Ycoz8c1hspMfFeNmQt5CBsBDtttYg5qEadCagDAqfkJboP58P-lP9FGX2Csjmyq7WX3Ep-Jw1ifn7MnI_TdPKmHAWagndTJe7TXT6oUWUh65fIXw_8PQnpdkMpDfWw3-8tp9qNDRdN7JOqJ-7Gnj8qPhNlHFqNveySLpnT88gtKjThY">
+  </div>
+  </div>
+  </div>
+  </div>
 </section>
 <!-- Stats Bar (Navy) - CENTERED (Figma update) -->
+<style>
+/* Stats bar — refined typographic hierarchy (number scale 0.85) */
+.stat-num { font-size: calc(clamp(2.25rem, 1.4rem + 2.2vw, 3.5rem) * 0.85); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; line-height: 1; }
+</style>
 <div class="bg-primary py-10 border-y border-white/5">
-<div class="max-w-[1280px] mx-auto px-margin-page grid grid-cols-2 md:grid-cols-4 gap-8">
-<div class="text-center">
-<p class="text-surface font-display-xl text-3xl font-bold mb-1" data-count="5000" data-suffix="+">0+</p>
-<p class="text-white/60 text-xs uppercase tracking-widest font-bold">Patients Served</p>
-</div>
-<div class="text-center">
-<p class="text-surface font-display-xl text-3xl font-bold mb-1" data-count="170" data-suffix="+">0+</p>
-<p class="text-white/60 text-xs uppercase tracking-widest font-bold">5-Star Reviews</p>
-</div>
-<div class="text-center">
-<p class="text-surface font-display-xl text-3xl font-bold mb-1" data-count="8" data-suffix="+ Yrs">0+ Yrs</p>
-<p class="text-white/60 text-xs uppercase tracking-widest font-bold">Local Experience</p>
-</div>
-<div class="text-center">
-<p class="text-surface font-display-xl text-3xl font-bold mb-1" data-count="2">0</p>
-<p class="text-white/60 text-xs uppercase tracking-widest font-bold">Modern Locations</p>
-</div>
-</div>
-</div>
-<!-- Why Us Section (Grid of cards) -->
-<section class="py-24 bg-surface opacity-0 animate-fade-in-up" id="why-us">
-<div class="w-full max-w-[1280px] mx-auto px-margin-page">
-<div class="text-center max-w-3xl mx-auto mb-16">
-<h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Why Superior Orthodontics?</h2>
-<div class="w-16 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
-<p class="text-on-surface-variant text-lg leading-relaxed">We blend clinical expertise with a warm, patient-first approach to give you the smile you deserve.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Affordable -->
-<div class="bg-white rounded-2xl p-8 border border-navy-100/50 shadow-sm service-card transition-ease-out">
-<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-white mb-6 icon-tile">
-<span class="material-symbols-outlined">payments</span>
-</div>
-<h3 class="font-headline-h4 text-lg mb-3">Affordable Payments</h3>
-<p class="text-on-surface-variant text-sm">Flexible plans starting at $188/mo with $0 down payment options for qualifying patients.</p>
-</div>
-<!-- Free Exam -->
-<div class="bg-white rounded-2xl p-8 border border-navy-100/50 shadow-sm service-card transition-ease-out">
-<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-white mb-6 icon-tile">
-<span class="material-symbols-outlined">health_and_safety</span>
-</div>
-<h3 class="font-headline-h4 text-lg mb-3">100% Free Exam</h3>
-<p class="text-on-surface-variant text-sm">Includes clinical evaluation and digital 3D x-rays ($99 value) with no obligation.</p>
-</div>
-<!-- No Hidden Fees -->
-<div class="bg-white rounded-2xl p-8 border border-navy-100/50 shadow-sm service-card transition-ease-out">
-<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-white mb-6 icon-tile">
-<span class="material-symbols-outlined">visibility_off</span>
-</div>
-<h3 class="font-headline-h4 text-lg mb-3">No Hidden Fees</h3>
-<p class="text-on-surface-variant text-sm">Transparent pricing from day one. You'll know exactly what to expect before you start.</p>
-</div>
-<!-- Trusted Expertise -->
-<div class="bg-white rounded-2xl p-8 border border-navy-100/50 shadow-sm service-card transition-ease-out">
-<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-white mb-6 icon-tile">
-<span class="material-symbols-outlined">verified</span>
-</div>
-<h3 class="font-headline-h4 text-lg mb-3">Trusted Expertise</h3>
-<p class="text-on-surface-variant text-sm">Led by Dr. Kole-James, providing specialized orthodontic care to the Detroit area for over 8 years.</p>
-</div>
-</div>
-</div>
-</section>
+  <div class="max-w-[1280px] mx-auto px-margin-page grid grid-cols-2 md:grid-cols-4 gap-8">
+  <div class="text-center">
+  <p class="stat-num text-surface font-bold mb-2" data-count="5000" data-suffix="+">5,000+</p>
+  <p class="text-white/85 text-xs font-semibold tracking-[0.01em]">Patients Served</p>
+  </div>
+  <div class="text-center">
+  <p class="stat-num text-surface font-bold mb-2" data-count="170" data-suffix="+">170+</p>
+  <p class="text-white/85 text-xs font-semibold tracking-[0.01em]">5-Star Reviews</p>
+  </div>
+  <div class="text-center">
+  <p class="stat-num text-surface font-bold mb-2" data-count="8" data-suffix="+ Yrs">8+ Yrs</p>
+  <p class="text-white/85 text-xs font-semibold tracking-[0.01em]">Local Experience</p>
+  </div>
+  <div class="text-center">
+  <p class="stat-num text-surface font-bold mb-2" data-count="2">2</p>
+  <p class="text-white/85 text-xs font-semibold tracking-[0.01em]">Modern Locations</p>
+  </div>
+  </div>
+  </div>
+<!-- Why Us Section — left-aligned header + 2x2 bento, lead card filled navy -->
+<style>
+/* Why Us — asymmetric editorial list: sticky heading + ruled rows (density 0.6) */
+.whyus-grid { display: grid; gap: 1.8rem; }
+@media (min-width: 1024px) { .whyus-grid { grid-template-columns: 2fr 3fr; gap: 2.4rem; } }
+.whyus-head { align-self: start; }
+@media (min-width: 1024px) { .whyus-head { position: sticky; top: 7rem; } }
+.whyus-row { display: flex; gap: 1.25rem; padding: 1.05rem 0; align-items: flex-start; }
+.whyus-row + .whyus-row { border-top: 1px solid #DAE2EB; }
+</style>
+<section id="why-us" class="bg-surface py-[3.6rem] opacity-0 animate-fade-in-up">
+  <div class="w-full max-w-[1280px] mx-auto px-margin-page">
+  <div class="whyus-grid">
+  <div class="whyus-head max-w-md">
+  <h2 class="font-headline-h2 text-headline-h2 text-primary mb-5">Why Superior Orthodontics?</h2>
+  <p class="text-on-surface-variant text-lg leading-relaxed">We blend clinical expertise with a warm, patient-first approach to give you the smile you deserve.</p>
+  </div>
+  <div class="whyus-list">
+  <div class="whyus-row">
+  <div class="w-12 h-12 shrink-0 rounded-xl bg-secondary flex items-center justify-center text-white icon-tile"><span class="material-symbols-outlined">payments</span></div>
+  <div><h3 class="font-headline-h4 text-xl mb-2 text-primary">Affordable Payments</h3><p class="text-on-surface-variant text-[15px] leading-relaxed">Flexible plans starting at $188/mo with $0 down payment options for qualifying patients.</p></div>
+  </div>
+  <div class="whyus-row">
+  <div class="w-12 h-12 shrink-0 rounded-xl bg-secondary flex items-center justify-center text-white icon-tile"><span class="material-symbols-outlined">health_and_safety</span></div>
+  <div><h3 class="font-headline-h4 text-xl mb-2 text-primary">100% Free Exam</h3><p class="text-on-surface-variant text-[15px] leading-relaxed">Includes clinical evaluation and digital 3D x-rays ($99 value) with no obligation.</p></div>
+  </div>
+  <div class="whyus-row">
+  <div class="w-12 h-12 shrink-0 rounded-xl bg-secondary flex items-center justify-center text-white icon-tile"><span class="material-symbols-outlined">visibility_off</span></div>
+  <div><h3 class="font-headline-h4 text-xl mb-2 text-primary">No Hidden Fees</h3><p class="text-on-surface-variant text-[15px] leading-relaxed">Transparent pricing from day one. You'll know exactly what to expect before you start.</p></div>
+  </div>
+  <div class="whyus-row">
+  <div class="w-12 h-12 shrink-0 rounded-xl bg-secondary flex items-center justify-center text-white icon-tile"><span class="material-symbols-outlined">verified</span></div>
+  <div><h3 class="font-headline-h4 text-xl mb-2 text-primary">Trusted Expertise</h3><p class="text-on-surface-variant text-[15px] leading-relaxed">Led by Dr. Kole-James, providing specialized orthodontic care to the Detroit area for over 8 years.</p></div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
 <!-- Treatments Section -->
 <section class="py-24 bg-white opacity-0 animate-fade-in-up" id="treatments">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
-<div class="text-center max-w-2xl mx-auto mb-16">
-<h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Treatment Options</h2>
-<div class="w-16 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
+<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+<div class="max-w-xl">
+<h2 class="font-headline-h2 text-headline-h2 text-primary mb-3">Treatment Options</h2>
 <p class="text-on-surface-variant text-lg">Personalized care for every stage of life.</p>
+</div>
+<a class="inline-flex items-center gap-1 text-secondary font-bold whitespace-nowrap hover:gap-3 transition-ease-out shrink-0 pb-1" href="treatments/index.html">All treatments <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 <!-- Braces for Kids -->
@@ -366,7 +381,6 @@
 </div>
 <!-- Clear Aligners -->
 <div class="group cursor-pointer relative">
-<div class="absolute top-2 right-2 bg-secondary text-white text-[10px] font-bold py-1 px-3 rounded-full uppercase tracking-wider z-10">Most Popular</div>
 <div class="mb-6 overflow-hidden rounded-2xl aspect-[4/3] shadow-md border border-navy-50">
 <img alt="Clear Aligners" class="w-full h-full object-cover group-hover:scale-105 transition-ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI-NYaoXJAXKoQhacHMIljJQKpzo4E2OUmP0L--tMUvgUJkON4OTFG8cD8ing6uYa8t3e7FvpbMJXgaH_qsnhflhLnefpUbG6CjELsKBECjK5fyH3SHPd9alZzkjpTUHHFTSaKpICRAaca5OnklfT8aT4EHmDQ_a2ILTapHWeZiQv7sKNzvuvLrzeywiL-ZUisvkD29P0MJBxvdnYgS5y9H3OiZurN8T4SwSUtiz5B1PLCYJWV3xM0engTJj_bIJszQSzDI8g52Q8">
 </div>
@@ -401,12 +415,12 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 <div class="relative group">
 <div class="absolute -inset-4 bg-secondary/5 rounded-[40px] transition-ease-out group-hover:bg-secondary/10"></div>
-<div class="relative rounded-[32px] overflow-hidden shadow-2xl border-4 border-white">
+<div class="relative rounded-[32px] overflow-hidden shadow-2xl">
 <img alt="Dr. Kishawn Kole-James" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9iXRk8nHjZd1IlZO9ua9gTpBulmgXGDES-MNsyIG_3eAQgHKIlX2yGLwN07OuUXCawxkJIb8a2OBmibGGnIE3BrHj3Pp9ssW5nkqRgR5TwrmN10VHsL-DLFmEbtoNWXJGc_aC9DyHm4jRlMozq6lMYNjeJ5owHjkIFzp1ZML2czCt0GkeyTLisbT824An2HGK_iW-TNSEtHmKnBh_oumTlixkHLdRYBdXpJohYy2Z03jKItnOXmSF5p-gg-t-2h5YD1RVp4w-OB8">
 </div>
 </div>
 <div>
-<span class="inline-block py-1 px-3 bg-secondary/10 text-secondary font-bold text-xs rounded-lg mb-6 uppercase tracking-wider">Clinical Director</span>
+<p class="text-secondary font-bold text-sm mb-3">Clinical Director</p>
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-6">Dr. Kishawn Kole-James</h2>
 <div class="space-y-4 text-on-surface-variant text-md leading-relaxed mb-8">
 <p class="">Dr. Kole-James has provided expert orthodontic care in the Detroit area for over 8 years. He earned his DDS from the University of Detroit Mercy and his Orthodontics Degree from Howard University.</p>
@@ -437,7 +451,6 @@
 <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-16 items-center">
 <!-- Left column: copy -->
 <div class="max-w-md">
-<span class="inline-block py-1 px-3 bg-secondary/10 text-secondary font-bold text-xs rounded-lg mb-6 uppercase tracking-wider">Real Results</span>
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-6">See the transformation.</h2>
 <p class="text-on-surface-variant text-lg leading-relaxed mb-8">Drag the slider to compare real patient smiles before and after their treatment at Superior Orthodontics.</p>
 <a class="inline-flex items-center text-secondary font-bold border-b-2 border-secondary pb-1 hover:gap-3 transition-ease-out gap-1" href="#schedule">
@@ -446,7 +459,7 @@
 </a>
 </div>
 <!-- Right column: interactive before/after slider (focal point) -->
-<div class="ba-slider relative w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl cursor-ew-resize" data-ba-slider>
+<div class="ba-slider relative w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl cursor-ew-resize focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-ba-slider role="slider" tabindex="0" aria-label="Reveal before and after patient smile. Use left and right arrow keys to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
 <!-- BEFORE image — PLACEHOLDER: replace with client photo -->
 <img class="ba-before absolute inset-0 w-full h-full object-cover" alt="Before treatment — placeholder image" src="https://placehold.co/1200x900/B2C0D1/143953?text=BEFORE+%E2%80%94+Replace+with+client+photo&font=roboto">
 <!-- AFTER image — PLACEHOLDER: replace with client photo -->
@@ -474,7 +487,6 @@
 <div class="grid grid-cols-1 lg:grid-cols-[4fr_8fr] gap-12 lg:gap-20 items-start">
 <!-- Left column: heading + intro + Google chip -->
 <div class="lg:sticky lg:top-28">
-<span class="inline-block py-1 px-3 bg-secondary/10 text-secondary font-bold text-xs rounded-lg mb-6 uppercase tracking-wider">Real Voices</span>
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-6">Patient Stories</h2>
 <p class="text-on-surface-variant text-lg mb-8 leading-relaxed">Join the thousands of families who trust Superior Orthodontics with their smiles.</p>
 <div class="inline-flex items-center gap-2 bg-white py-2 px-6 rounded-full border border-navy-100 shadow-sm">
@@ -488,12 +500,12 @@
 <div class="bg-white p-10 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card md:col-span-2 relative">
 <span class="material-symbols-outlined text-secondary/30 text-[64px] absolute top-6 right-8 leading-none select-none">format_quote</span>
 <div>
-<div class="flex text-secondary mb-6">
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="flex text-secondary mb-6" role="img" aria-label="Rated 5 out of 5 stars">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
 </div>
 <p class="text-primary italic mb-8 leading-relaxed">"The benefits coordinator gave me an affordable plan right away. The staff is warm and the doctors explain everything. My kids actually look forward to going!"</p>
 </div>
@@ -510,12 +522,12 @@
 <!-- Review 2 -->
 <div class="bg-white p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
 <div>
-<div class="flex text-secondary mb-6">
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="flex text-secondary mb-6" role="img" aria-label="Rated 5 out of 5 stars">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
 </div>
 <p class="text-primary italic mb-8 leading-relaxed">"As an adult getting braces, I was nervous. Dr. Kole-James made me feel so comfortable. The ceramic braces are hardly noticeable, and my teeth are moving fast!"</p>
 </div>
@@ -530,12 +542,12 @@
 <!-- Review 3 -->
 <div class="bg-white p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
 <div>
-<div class="flex text-secondary mb-6">
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="flex text-secondary mb-6" role="img" aria-label="Rated 5 out of 5 stars">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
 </div>
 <p class="text-primary italic mb-8 leading-relaxed">"Best orthodontist in the area. We visited 3 others before choosing Superior. Their price was the best, but the vibe and modern tech sold us. Highly recommend!"</p>
 </div>
@@ -551,6 +563,7 @@
 </div>
 </section>
 <!-- Pricing CTA — FULL-BLEED navy (no inner box, edge-to-edge) -->
+
 <section class="py-28 md:py-32 bg-primary relative overflow-hidden opacity-0 animate-fade-in-up text-center md:text-left">
 <!-- Decorative blobs anchored to viewport edges -->
 <div class="absolute -top-32 -right-32 w-[28rem] h-[28rem] bg-secondary/10 rounded-full blur-3xl"></div>
@@ -559,15 +572,12 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <div>
 <h2 class="font-headline-h2 text-headline-h2 text-white mb-6">Expert treatment that fits your monthly budget.</h2>
-<p class="text-navy-100/70 text-lg mb-8 max-w-md mx-auto md:mx-0">Professional orthodontic care shouldn't be out of reach. We offer plans for every family.</p>
-<div class="flex flex-col gap-4 items-center md:items-start">
+<p class="text-navy-100/85 text-lg mb-8 max-w-md mx-auto md:mx-0">Professional orthodontic care shouldn't be out of reach. We offer plans for every family.</p>
+<div class="flex flex-col gap-5 items-center md:items-start">
 <a class="inline-flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold text-[17px] hover:brightness-110 hover:-translate-y-1 transition-ease-out shadow-xl shadow-secondary/30" href="#schedule">
                             Schedule Free Exam
                         </a>
-<div class="flex items-center gap-3 px-6 py-4 rounded-full border border-white/20 text-white font-bold">
-<span class="material-symbols-outlined text-secondary">payment</span>
-                            $0 Down Options Available
-                        </div>
+<p class="text-navy-100/80 text-sm">Most insurance accepted. Financing available.</p>
 </div>
 </div>
 <div class="bg-white/5 backdrop-blur-sm rounded-[32px] p-10 border border-white/10 text-center">
@@ -591,44 +601,48 @@
                             Most insurance accepted
                         </li>
 </ul>
-<p class="text-navy-100/40 text-[10px] uppercase font-bold tracking-tighter">Conditions apply based on treatment needs</p>
+<p class="text-navy-100/70 text-[11px] font-semibold">Conditions apply based on treatment needs.</p>
 </div>
 </div>
 </div>
 </section>
+
 <!-- Locations Section -->
 <!-- What to Expect Section -->
 <section class="py-24 bg-paper-50 opacity-0 animate-fade-in-up">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-3xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">What to Expect at Your First Visit</h2>
-<div class="w-16 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
 <p class="text-on-surface-variant text-lg">Your first visit is 100% free ($99 value). No pressure, just straight answers.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="relative">
+<!-- Connecting line ties the four steps into one flow on md+ -->
+<div class="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 bg-navy-100" aria-hidden="true"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-12 relative">
 <!-- Step 1 -->
 <div class="text-center">
-<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle"><span class="material-symbols-outlined text-[28px]">stethoscope</span></div>
-<h4 class="font-bold text-primary mb-2">Evaluation</h4>
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-paper-50"><span class="material-symbols-outlined text-[28px]">stethoscope</span></div>
+<h3 class="font-bold text-primary mb-2">Evaluation</h3>
 <p class="text-on-surface-variant text-sm px-4">Full evaluation of your teeth and jaw to understand your needs.</p>
 </div>
 <!-- Step 2 -->
 <div class="text-center">
-<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle"><span class="material-symbols-outlined text-[28px]">dentistry</span></div>
-<h4 class="font-bold text-primary mb-2">3D X-Rays</h4>
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-paper-50"><span class="material-symbols-outlined text-[28px]">dentistry</span></div>
+<h3 class="font-bold text-primary mb-2">3D X-Rays</h3>
 <p class="text-on-surface-variant text-sm px-4">Digital imaging included for a clear picture of treatment requirements.</p>
 </div>
 <!-- Step 3 -->
 <div class="text-center">
-<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle"><span class="material-symbols-outlined text-[28px]">receipt_long</span></div>
-<h4 class="font-bold text-primary mb-2">Cost Breakdown</h4>
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-paper-50"><span class="material-symbols-outlined text-[28px]">receipt_long</span></div>
+<h3 class="font-bold text-primary mb-2">Cost Breakdown</h3>
 <p class="text-on-surface-variant text-sm px-4">Detailed summary of total costs and monthly payment options.</p>
 </div>
 <!-- Step 4 -->
 <div class="text-center">
-<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle"><span class="material-symbols-outlined text-[28px]">forum</span></div>
-<h4 class="font-bold text-primary mb-2">Straight Answers</h4>
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-paper-50"><span class="material-symbols-outlined text-[28px]">forum</span></div>
+<h3 class="font-bold text-primary mb-2">Straight Answers</h3>
 <p class="text-on-surface-variant text-sm px-4">Honest recommendations on which treatment makes sense for you.</p>
+</div>
 </div>
 </div>
 <div class="mt-16 text-center">
@@ -639,7 +653,6 @@
 <div class="w-full max-w-[800px] mx-auto px-margin-page">
 <div class="text-center mb-12">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Common Questions</h2>
-<div class="w-16 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
 <p class="text-on-surface-variant">Quick answers to help you start your journey with confidence.</p>
 </div>
 <div class="space-y-4">
@@ -676,7 +689,6 @@
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-2xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Our Clinics</h2>
-<div class="w-16 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
 <p class="text-on-surface-variant text-lg">Local, modern orthodontic care in two convenient locations.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -785,7 +797,7 @@
 </div>
 </div>
 <div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
-<p class="text-navy-100/40 text-[11px] uppercase tracking-widest font-bold">© 2024 Superior Orthodontics. All Rights Reserved.</p>
+<p class="text-navy-100/60 text-[11px] uppercase tracking-widest font-bold">© 2026 Superior Orthodontics. All Rights Reserved.</p>
 <div class="flex gap-10 text-navy-100/40 text-[11px] uppercase tracking-widest font-bold">
 <a class="hover:text-white transition-ease-out" href="#">Privacy Policy</a>
 <a class="hover:text-white transition-ease-out" href="#">Terms &amp; Conditions</a>
@@ -833,37 +845,59 @@
         requestAnimationFrame(step);
     };
 
+    // Real values live in the HTML (so no-JS, print, and screenshots never read "0").
+    // The count-up resets to 0 and climbs only once the bar first touches the viewport,
+    // so the reset is off-edge and imperceptible — and never fires if the section is
+    // never scrolled into view, leaving the real numbers intact.
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const countObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateCount(entry.target, parseFloat(entry.target.dataset.count));
+                if (!prefersReducedMotion) {
+                    animateCount(entry.target, parseFloat(entry.target.dataset.count));
+                }
                 countObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.01 });
 
     document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 
-    // Before/After image slider (drag to reveal)
+    // Before/After image slider — pointer drag + keyboard (arrows / Home / End)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {
         const after = slider.querySelector('.ba-after');
         const handle = slider.querySelector('.ba-handle');
         let dragging = false;
-        const setPosition = (clientX) => {
-            const rect = slider.getBoundingClientRect();
-            let pct = ((clientX - rect.left) / rect.width) * 100;
-            pct = Math.max(0, Math.min(100, pct));
+        let pct = 50;
+        const applyPct = (next) => {
+            pct = Math.max(0, Math.min(100, next));
             after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
             handle.style.left = `${pct}%`;
+            slider.setAttribute('aria-valuenow', Math.round(pct));
+        };
+        const setFromX = (clientX) => {
+            const rect = slider.getBoundingClientRect();
+            applyPct(((clientX - rect.left) / rect.width) * 100);
         };
         slider.addEventListener('pointerdown', (e) => {
             dragging = true;
             slider.setPointerCapture(e.pointerId);
-            setPosition(e.clientX);
+            setFromX(e.clientX);
         });
-        slider.addEventListener('pointermove', (e) => { if (dragging) setPosition(e.clientX); });
+        slider.addEventListener('pointermove', (e) => { if (dragging) setFromX(e.clientX); });
         slider.addEventListener('pointerup', (e) => { dragging = false; try { slider.releasePointerCapture(e.pointerId); } catch (_) {} });
         slider.addEventListener('pointercancel', () => { dragging = false; });
+        slider.addEventListener('keydown', (e) => {
+            const step = e.shiftKey ? 10 : 4;
+            switch (e.key) {
+                case 'ArrowLeft': case 'ArrowDown': applyPct(pct - step); break;
+                case 'ArrowRight': case 'ArrowUp': applyPct(pct + step); break;
+                case 'Home': applyPct(0); break;
+                case 'End': applyPct(100); break;
+                default: return;
+            }
+            e.preventDefault();
+        });
     });
 </script>
 
