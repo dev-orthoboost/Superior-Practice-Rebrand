@@ -119,6 +119,11 @@
         .service-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px -8px rgba(20, 57, 83, 0.12); }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 
+        /* Bolder primary buttons — committed pink glow + lift on hover */
+        .btn-pop { box-shadow: 0 12px 30px -8px rgba(212, 92, 132, 0.55); transition: box-shadow 0.4s cubic-bezier(0.165,0.84,0.44,1), transform 0.4s cubic-bezier(0.165,0.84,0.44,1), filter 0.3s ease; }
+        .btn-pop:hover { box-shadow: 0 20px 48px -10px rgba(212, 92, 132, 0.72); }
+        @media (prefers-reduced-motion: reduce) { .btn-pop { transition: none; } }
+
         /* Hero load stagger - feels deliberate but not slow */
         @keyframes heroFadeUp {
             from { opacity: 0; transform: translateY(32px); }
@@ -360,7 +365,7 @@
   </div>
   </section>
 <!-- Treatments Section -->
-<section class="py-24 bg-white opacity-0 animate-fade-in-up" id="treatments">
+<section class="py-24 bg-paper-50 opacity-0 animate-fade-in-up" id="treatments">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
 <div class="max-w-xl">
@@ -372,7 +377,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 <!-- Braces for Kids -->
 <div class="group cursor-pointer">
-<div class="mb-6 overflow-hidden rounded-2xl aspect-[4/3] shadow-md border border-navy-50">
+<div class="mb-5 overflow-hidden rounded-2xl aspect-[4/3] shadow-lg shadow-navy-200/40 ring-1 ring-navy-100/40 transition-ease-out group-hover:shadow-xl group-hover:shadow-navy-200/50 group-hover:-translate-y-1">
 <img alt="Braces for all ages" class="w-full h-full object-cover group-hover:scale-105 transition-ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPJMPakbwjIJVMaRVce7QEEzVHhiGbtZRdDyFZaaDfgYRmSdO31q1w27r4BHzJMt7MNJgw9cK4VQp5Hfiti4Psnht9ZRuXMkhLygNVFzUlCuGN8pxHh2Ou0IJA5ouGEDEDl8AQNvO7LEFqiTM0DYKQo-tx4WqnGXSfGgIO3as3zf-8XAWhNHoNeFm4GFSiCgcF_WLzKQUP6v-lmvjrs9PfWrvB--R_3_oySmpB8pdGexcb9U0lIUJboEBslKB0LK-qXJ2rn-hF0fQ">
 </div>
 <h3 class="font-headline-h4 text-primary text-lg mb-2">Braces for Kids &amp; Teens</h3>
@@ -381,7 +386,7 @@
 </div>
 <!-- Clear Aligners -->
 <div class="group cursor-pointer relative">
-<div class="mb-6 overflow-hidden rounded-2xl aspect-[4/3] shadow-md border border-navy-50">
+<div class="mb-5 overflow-hidden rounded-2xl aspect-[4/3] shadow-lg shadow-navy-200/40 ring-1 ring-navy-100/40 transition-ease-out group-hover:shadow-xl group-hover:shadow-navy-200/50 group-hover:-translate-y-1">
 <img alt="Clear Aligners" class="w-full h-full object-cover group-hover:scale-105 transition-ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI-NYaoXJAXKoQhacHMIljJQKpzo4E2OUmP0L--tMUvgUJkON4OTFG8cD8ing6uYa8t3e7FvpbMJXgaH_qsnhflhLnefpUbG6CjELsKBECjK5fyH3SHPd9alZzkjpTUHHFTSaKpICRAaca5OnklfT8aT4EHmDQ_a2ILTapHWeZiQv7sKNzvuvLrzeywiL-ZUisvkD29P0MJBxvdnYgS5y9H3OiZurN8T4SwSUtiz5B1PLCYJWV3xM0engTJj_bIJszQSzDI8g52Q8">
 </div>
 <h3 class="font-headline-h4 text-primary text-lg mb-2">Clear Aligners</h3>
@@ -390,7 +395,7 @@
 </div>
 <!-- Adult Braces -->
 <div class="group cursor-pointer">
-<div class="mb-6 overflow-hidden rounded-2xl aspect-[4/3] shadow-md border border-navy-50">
+<div class="mb-5 overflow-hidden rounded-2xl aspect-[4/3] shadow-lg shadow-navy-200/40 ring-1 ring-navy-100/40 transition-ease-out group-hover:shadow-xl group-hover:shadow-navy-200/50 group-hover:-translate-y-1">
 <img alt="Adult Braces" class="w-full h-full object-cover group-hover:scale-105 transition-ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk_Na2fuElaE9cG_CcpS64czq04wscEdxc1zmTuLCUiRLHAI_n8l77HOfDLbq7vC772JMSZVJ9dPEoGoi4rE9RqERBDr9wyzoWTDwjAiYax5npboiIrLKZ6WyvpC6EDgk8XGgaOa7hzbp1ylGBndzIe_ujPyFwlreOzr8GSkEDAlDDPRG8z5Ha9qjpWwoT6CKQWDCO1gOLoihtZ-YTEToLed_s2en7nTuA2TsDBfQeFBrlhk06ZKM2YE1hFC7ZMdBczgjPpAdjQ2o">
 </div>
 <h3 class="font-headline-h4 text-primary text-lg mb-2">Braces for Adults</h3>
@@ -399,7 +404,7 @@
 </div>
 <!-- Early Orthodontics -->
 <div class="group cursor-pointer">
-<div class="mb-6 overflow-hidden rounded-2xl aspect-[4/3] shadow-md border border-navy-50">
+<div class="mb-5 overflow-hidden rounded-2xl aspect-[4/3] shadow-lg shadow-navy-200/40 ring-1 ring-navy-100/40 transition-ease-out group-hover:shadow-xl group-hover:shadow-navy-200/50 group-hover:-translate-y-1">
 <img alt="Early Orthodontics" class="w-full h-full object-cover group-hover:scale-105 transition-ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANgptXg1g8AFVQhLIXRfrNrLb-NCybLqUqNmBr_jL-ULHrqxJGrWjAgq-KKxl6Qu7ZY_BelebKikaLutd6Tuqj15juyjTAkTDy34EgfAWl5in8F7YBAZiWF4-3RAMRRSTDSK07MSlV_6gAiwN-vQ7iUoDB5QiHU80Qne8SWK5-d7efN5oqPwHtuqPHMG77mKkwwv28UMKd1sCp5TK9GC0e-nDLOFd2xwVHjPp7Reup1VjfPTfRXI8bvMxeMSJuGeCaYizwMhNK98A">
 </div>
 <h3 class="font-headline-h4 text-primary text-lg mb-2">Early Orthodontics</h3>
@@ -497,7 +502,7 @@
 <!-- Right column: featured testimonial spans full width, 2 smaller below -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- Review 1 (featured, spans full width on md+) -->
-<div class="bg-white p-10 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card md:col-span-2 relative">
+<div class="bg-white p-10 rounded-3xl border border-navy-100 shadow-lg shadow-navy-200/25 flex flex-col justify-between testimonial-card md:col-span-2 relative">
 <span class="material-symbols-outlined text-secondary/30 text-[64px] absolute top-6 right-8 leading-none select-none">format_quote</span>
 <div>
 <div class="flex text-secondary mb-6" role="img" aria-label="Rated 5 out of 5 stars">
@@ -520,7 +525,7 @@
 </div>
 </div>
 <!-- Review 2 -->
-<div class="bg-white p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
+<div class="bg-white p-8 rounded-3xl border border-navy-100 shadow-md shadow-navy-200/15 flex flex-col justify-between testimonial-card">
 <div>
 <div class="flex text-secondary mb-6" role="img" aria-label="Rated 5 out of 5 stars">
 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
@@ -540,7 +545,7 @@
 </div>
 </div>
 <!-- Review 3 -->
-<div class="bg-white p-8 rounded-3xl border border-navy-100 flex flex-col justify-between testimonial-card">
+<div class="bg-white p-8 rounded-3xl border border-navy-100 shadow-md shadow-navy-200/15 flex flex-col justify-between testimonial-card">
 <div>
 <div class="flex text-secondary mb-6" role="img" aria-label="Rated 5 out of 5 stars">
 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
@@ -574,18 +579,18 @@
 <h2 class="font-headline-h2 text-headline-h2 text-white mb-6">Expert treatment that fits your monthly budget.</h2>
 <p class="text-navy-100/85 text-lg mb-8 max-w-md mx-auto md:mx-0">Professional orthodontic care shouldn't be out of reach. We offer plans for every family.</p>
 <div class="flex flex-col gap-5 items-center md:items-start">
-<a class="inline-flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold text-[17px] hover:brightness-110 hover:-translate-y-1 transition-ease-out shadow-xl shadow-secondary/30" href="#schedule">
+<a class="btn-pop inline-flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold text-[17px] hover:brightness-110 hover:-translate-y-1 transition-ease-out" href="#schedule">
                             Schedule Free Exam
                         </a>
 <p class="text-navy-100/80 text-sm">Most insurance accepted. Financing available.</p>
 </div>
 </div>
-<div class="bg-white/5 backdrop-blur-sm rounded-[32px] p-10 border border-white/10 text-center">
+<div class="bg-white/[0.08] rounded-[32px] p-10 border border-white/15 ring-1 ring-secondary/25 shadow-2xl shadow-black/25 text-center relative">
 <p class="text-secondary font-bold text-xs uppercase tracking-widest mb-2">Our Base Plan</p>
 <div class="flex items-baseline justify-center gap-2 mb-6">
 <span class="text-white font-display-xl text-2xl font-bold">from</span>
 <span class="text-white font-display-xl text-6xl font-bold">$188</span>
-<span class="text-navy-100/50 font-bold text-xl">/mo</span>
+<span class="text-navy-100/75 font-bold text-xl">/mo</span>
 </div>
 <ul class="space-y-4 text-left max-w-[240px] mx-auto mb-8">
 <li class="flex items-start gap-3 text-white/80 text-sm">
@@ -615,38 +620,40 @@
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">What to Expect at Your First Visit</h2>
 <p class="text-on-surface-variant text-lg">Your first visit is 100% free ($99 value). No pressure, just straight answers.</p>
 </div>
+<div class="bg-white rounded-[32px] border border-navy-100/50 shadow-xl shadow-navy-200/25 p-8 md:p-12">
 <div class="relative">
 <!-- Connecting line ties the four steps into one flow on md+ -->
 <div class="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 bg-navy-100" aria-hidden="true"></div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-12 relative">
 <!-- Step 1 -->
 <div class="text-center">
-<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-paper-50"><span class="material-symbols-outlined text-[28px]">stethoscope</span></div>
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-white"><span class="material-symbols-outlined text-[28px]">stethoscope</span></div>
 <h3 class="font-bold text-primary mb-2">Evaluation</h3>
 <p class="text-on-surface-variant text-sm px-4">Full evaluation of your teeth and jaw to understand your needs.</p>
 </div>
 <!-- Step 2 -->
 <div class="text-center">
-<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-paper-50"><span class="material-symbols-outlined text-[28px]">dentistry</span></div>
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-white"><span class="material-symbols-outlined text-[28px]">dentistry</span></div>
 <h3 class="font-bold text-primary mb-2">3D X-Rays</h3>
 <p class="text-on-surface-variant text-sm px-4">Digital imaging included for a clear picture of treatment requirements.</p>
 </div>
 <!-- Step 3 -->
 <div class="text-center">
-<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-paper-50"><span class="material-symbols-outlined text-[28px]">receipt_long</span></div>
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-white"><span class="material-symbols-outlined text-[28px]">receipt_long</span></div>
 <h3 class="font-bold text-primary mb-2">Cost Breakdown</h3>
 <p class="text-on-surface-variant text-sm px-4">Detailed summary of total costs and monthly payment options.</p>
 </div>
 <!-- Step 4 -->
 <div class="text-center">
-<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-paper-50"><span class="material-symbols-outlined text-[28px]">forum</span></div>
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mx-auto mb-6 step-circle ring-8 ring-white"><span class="material-symbols-outlined text-[28px]">forum</span></div>
 <h3 class="font-bold text-primary mb-2">Straight Answers</h3>
 <p class="text-on-surface-variant text-sm px-4">Honest recommendations on which treatment makes sense for you.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="mt-16 text-center">
-<a class="inline-flex items-center justify-center bg-secondary text-white px-10 py-4 rounded-full font-bold text-[18px] shadow-lg shadow-secondary/20 hover:brightness-110 hover:-translate-y-1 transition-ease-out" href="#schedule">Schedule Your Free Exam Today</a>
+<a class="btn-pop inline-flex items-center justify-center bg-secondary text-white px-10 py-4 rounded-full font-bold text-[18px] hover:brightness-110 hover:-translate-y-1 transition-ease-out" href="#schedule">Schedule Your Free Exam Today</a>
 </div>
 </div>
 </section><section class="py-24 bg-surface opacity-0 animate-fade-in-up" id="faq">
@@ -656,7 +663,7 @@
 <p class="text-on-surface-variant">Quick answers to help you start your journey with confidence.</p>
 </div>
 <div class="space-y-4">
-<details class="group bg-white border border-navy-100 rounded-2xl overflow-hidden transition-ease-out">
+<details class="group bg-white border border-navy-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-ease-out">
 <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-navy-50/50 transition-ease-out">
 <span class="font-bold text-primary font-body-md">Is the first exam really free?</span>
 <span class="material-symbols-outlined expand-icon transition-transform duration-300 text-secondary">expand_more</span>
@@ -665,7 +672,7 @@
                     Absolutely. Your initial consultation, including a clinical exam and digital 3D x-rays, is 100% free with no obligation to start treatment.
                 </div>
 </details>
-<details class="group bg-white border border-navy-100 rounded-2xl overflow-hidden transition-ease-out">
+<details class="group bg-white border border-navy-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-ease-out">
 <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-navy-50/50 transition-ease-out">
 <span class="font-bold text-primary font-body-md">How long does treatment usually take?</span>
 <span class="material-symbols-outlined expand-icon transition-transform duration-300 text-secondary">expand_more</span>
@@ -674,7 +681,7 @@
                     Every smile is different. Average treatment times range from 12 to 24 months, but we'll provide a more accurate estimate during your free exam.
                 </div>
 </details>
-<details class="group bg-white border border-navy-100 rounded-2xl overflow-hidden transition-ease-out">
+<details class="group bg-white border border-navy-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-ease-out">
 <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-navy-50/50 transition-ease-out">
 <span class="font-bold text-primary font-body-md">Do you accept my insurance?</span>
 <span class="material-symbols-outlined expand-icon transition-transform duration-300 text-secondary">expand_more</span>
@@ -693,7 +700,7 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <!-- Eastpointe -->
-<div class="bg-paper-50 rounded-[40px] p-10 border border-navy-100 flex flex-col group hover:border-secondary transition-ease-out location-card">
+<div class="bg-white rounded-[40px] p-10 border border-navy-100 shadow-lg shadow-navy-200/25 flex flex-col group hover:border-secondary transition-ease-out location-card">
 <div class="flex justify-between items-start mb-8">
 <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-primary shadow-sm border border-navy-50 group-hover:bg-secondary group-hover:text-white transition-ease-out">
 <span class="material-symbols-outlined text-[32px]">storefront</span>
@@ -717,7 +724,7 @@
 </div>
 </div>
 <!-- Southfield -->
-<div class="bg-paper-50 rounded-[40px] p-10 border border-navy-100 flex flex-col group hover:border-secondary transition-ease-out location-card">
+<div class="bg-white rounded-[40px] p-10 border border-navy-100 shadow-lg shadow-navy-200/25 flex flex-col group hover:border-secondary transition-ease-out location-card">
 <div class="flex justify-between items-start mb-8">
 <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-primary shadow-sm border border-navy-50 group-hover:bg-secondary group-hover:text-white transition-ease-out">
 <span class="material-symbols-outlined text-[32px]">apartment</span>
