@@ -16,9 +16,9 @@ Design system, animation classes, nav/path scheme, and "don'ts" from the
 two 2026-05-29 specs still apply verbatim — this spec only changes *data,
 content, imagery, SEO, and the page count*. Do not restyle or re-architect.
 
-This remains a static design/handoff deliverable; the production build is
-WordPress + Elementor + RankMath Pro on SiteGround. On-page SEO here is a
-design spec the Elementor build mirrors.
+**WordPress/Elementor are no longer part of the workflow** (decision
+2026-07-07): this static site IS the production deliverable. On-page SEO,
+forms, and assets must therefore be production-real, not handoff placeholders.
 
 ---
 
@@ -80,7 +80,7 @@ Ads currently run on: Braces + Clear Aligners.
 | File | Page | Notes |
 |---|---|---|
 | `faq.html` (root) | Orthodontic FAQ | Promote homepage `<details>` accordion into standalone page; expand with cost/insurance/age/financing Q&As. Root-level nav paths. |
-| `contact.html` (root) | Contact & Appointment | Both offices (real NAP), hours, click-to-call, appointment-request form section (form posts nowhere yet — `action="#"`, labeled for Elementor wiring), map placeholders labeled for embed. |
+| `contact.html` (root) | Contact & Appointment | Both offices (real NAP), hours, click-to-call, appointment-request form section (`action="#"` until a form backend is chosen — flag for Jules), map placeholders labeled for embed. |
 | `locations/eastpointe.html` | Eastpointe office | Unique H1/title, real NAP, hours, directions ("9 Mile & Kelly"), per-office schema, service-area copy (Macomb County). Uses `treatments/`-style depth paths (one level deep). |
 | `locations/southfield.html` | Southfield office | Same pattern; "12 Mile & Northwestern, Amazing Smiles bldg, 2nd fl"; Oakland County. |
 
@@ -106,19 +106,20 @@ with correct depth prefixes.
 4. Real photos get descriptive `alt` (e.g. "Dr. Kole-James with a patient at
    Superior Orthodontics in Eastpointe, MI").
 5. Preserve one `<h1>` per page; keep heading order logical.
-6. Optional: `sitemap.xml` + `robots.txt` at root (low priority; Elementor
-   regenerates in prod — build only if quick).
+6. `sitemap.xml` + `robots.txt` at root — now required, since this static site
+   is production (no CMS will generate them).
 
 ---
 
 ## Photos (pull real, from Drive)
-Source folders (Superior Assets → Production Library / All Uploads):
-- `Raw - Superior Orthodontics` (1HCvMoP_x9xlSMYlQPks3a968TjV4HrYN)
-- `All Uploads - Superior Orthodontics` (1oN8NIYoqChH7HlmtrngjAnlcwDpmFGdv)
-- `Working Web Files - Superior Orthodontics` (1homTnojVZk2sk-LmORmGmC907hHyaBxB)
+Approved source folders ONLY:
+- `Winners - Superior Orthodontics` (1vnN3JPET4SR3tgZiDxyCBQsJGbuxTMU8) — client-approved selects, primary source
+- `Working Web Files - Superior Orthodontics` (1homTnojVZk2sk-LmORmGmC907hHyaBxB) — web-ready files
 - `Brand Assets - Superior Orthodontics` (1EPLwXg1P-ZA9K2ZwKbIj0r4fX27aPqWm) — logo SVG/PNG
 
 Rules:
+- **NEVER use photos from `Raw - Superior Orthodontics`** — raw = unapproved.
+  (Standing rule, applies to all clients.)
 - **Avoid** the `Seasonal_*` / `Evergreen_*` / `Kids-Club_*` ad graphics for
   site imagery — they have baked-in marketing text.
 - Prefer clean candid photos (office, team, doctor, patients) per brand imagery
@@ -127,6 +128,23 @@ Rules:
   update `src` + `alt`. Localize the real logo SVG too.
 - Where no suitable real photo exists (e.g. before/after pairs), keep a
   clearly-labeled local placeholder rather than a broken/expiring link.
+
+## Voice, copy & motion (added 2026-07-07)
+- **Persona voice: Dr. A. Joe** (Budget-Friendly Everyday Ortho) — plain,
+  warm, price-first, zero jargon. This matches Superior's own brand-kit voice
+  ("talk like a friend who happens to be your orthodontist"; state the price,
+  no hedging). All new/rewritten copy follows it.
+- **All copy passes through the /humanizer methodology**
+  (github.com/blader/humanizer). No AI-slop anti-patterns: no "it's not X,
+  it's Y", no rule-of-three padding, no "seamless/elevate/delve" vocabulary,
+  no formulaic symmetry.
+- **No eyebrow labels** (kicker text above headlines) anywhere on the site
+  unless Jules instructs otherwise — strip existing eyebrow chips/pills during
+  the pass and size headlines up to lead.
+- **Animations: anime.js** (CDN) is the motion library going forward. Reuse
+  the existing motion vocabulary (load stagger, scroll reveal, count-up,
+  hover lifts) but drive new/updated motion through anime.js. Keep the
+  `prefers-reduced-motion` catch-all.
 
 ## Content-accuracy don'ts
 - No Invisalign, no lingual braces, no Spanish-language claims, no Medicaid.
