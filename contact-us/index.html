@@ -254,8 +254,8 @@
 <!-- Hero -->
 <section id="hero" class="relative pt-12 pb-16 overflow-hidden bg-white">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page relative z-10 text-center">
-<h1 class="font-headline-h1-mobile md:font-headline-h1 text-headline-h1-mobile md:text-headline-h1 text-primary mb-6 leading-tight hero-reveal hero-reveal-1 max-w-3xl mx-auto">Come say hi.<br>First visit's free.</h1>
-<p class="font-lead text-lead text-on-surface-variant max-w-2xl mx-auto hero-reveal hero-reveal-2">
+<h1 class="font-headline-h1-mobile md:font-headline-h1 text-headline-h1-mobile md:text-headline-h1 text-primary mb-6 leading-tight max-w-3xl mx-auto" data-reveal>Come say hi.<br>First visit's free.</h1>
+<p class="font-lead text-lead text-on-surface-variant max-w-2xl mx-auto" data-reveal>
                         Call, book online, or stop by either office. We'll answer your questions and set you up with a free exam.
                     </p>
 </div>
@@ -486,46 +486,6 @@
         }
     });
 
-    // Section-level fade-in on scroll into view (skips Hero — Hero uses its own load stagger)
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in-up');
-                sectionObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('section:not(#hero)').forEach(section => {
-        section.classList.add('opacity-0');
-        sectionObserver.observe(section);
-    });
-
-    // Count-up animation for stats bar numbers when they scroll into view
-    const animateCount = (el, target, duration = 1600) => {
-        const start = performance.now();
-        const prefix = el.dataset.prefix || '';
-        const suffix = el.dataset.suffix || '';
-        const step = (now) => {
-            const t = Math.min(1, (now - start) / duration);
-            const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-            const value = Math.round(target * eased);
-            el.textContent = `${prefix}${value.toLocaleString()}${suffix}`;
-            if (t < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-    };
-
-    const countObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCount(entry.target, parseFloat(entry.target.dataset.count));
-                countObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 
     // Before/After image slider (drag to reveal)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {
@@ -549,4 +509,6 @@
         slider.addEventListener('pointercancel', () => { dragging = false; });
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+<script src="../js/motion.js" defer></script>
 </body></html>

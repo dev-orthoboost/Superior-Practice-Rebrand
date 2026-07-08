@@ -267,7 +267,7 @@
   <div class="hero-content w-full max-w-[1280px] mx-auto px-margin-page relative z-10">
   <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-16 items-center">
   <div class="max-w-3xl">
-  <div class="flex items-center gap-3 mb-7 hero-reveal hero-reveal-1">
+  <div class="flex items-center gap-3 mb-7" data-reveal>
   <div class="flex text-secondary" role="img" aria-label="Rated 5.0 out of 5 stars">
   <span class="material-symbols-outlined text-[19px] hero-twinkle" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
   <span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
@@ -277,11 +277,11 @@
   </div>
   <span class="text-sm font-bold text-primary">5.0 from 500+ patient reviews</span>
   </div>
-  <h1 class="font-headline-h1 text-primary mb-6 text-[clamp(2rem,1rem+4.2vw,5.25rem)] leading-[0.98] tracking-[-0.03em] [text-wrap:balance] hero-reveal hero-reveal-2">Expert Care.<br>Straight Answers.<br><span class="text-secondary italic">A Smile You'll Love.</span></h1>
-  <p class="font-lead text-lead text-on-surface-variant mb-8 max-w-xl hero-reveal hero-reveal-3">
+  <h1 class="font-headline-h1 text-primary mb-6 text-[clamp(2rem,1rem+4.2vw,5.25rem)] leading-[0.98] tracking-[-0.03em] [text-wrap:balance]" data-reveal>Expert Care.<br>Straight Answers.<br><span class="text-secondary italic">A Smile You'll Love.</span></h1>
+  <p class="font-lead text-lead text-on-surface-variant mb-8 max-w-xl" data-reveal>
                           Braces and clear aligners <strong class="text-primary font-bold">from $188/month</strong>. $1,000 down, 0% in-house financing, and a free first exam.
                       </p>
-  <div class="flex flex-col sm:flex-row gap-4 hero-reveal hero-reveal-4">
+  <div class="flex flex-col sm:flex-row gap-4" data-reveal>
   <a class="hero-cta inline-flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold text-[17px] hover:brightness-110 transition-ease-out group shadow-xl shadow-secondary/30 hover:scale-[1.02] hover:-translate-y-0.5" href="#schedule">
                               Schedule Your Free Exam
                               <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-ease-out">arrow_forward</span>
@@ -291,12 +291,12 @@
                               (248) 313-4899
                           </a>
   </div>
-  <p class="mt-5 flex items-center gap-2 text-sm text-on-surface-variant hero-reveal hero-reveal-4">
+  <p class="mt-5 flex items-center gap-2 text-sm text-on-surface-variant" data-reveal>
   <span class="w-1.5 h-1.5 rounded-full bg-secondary hero-dot-pulse"></span>
                           Free initial exam, a $99 value. No obligation.
                       </p>
   </div>
-  <div class="relative hero-reveal hero-reveal-5 lg:max-w-[440px] lg:ml-auto">
+  <div class="relative lg:max-w-[440px] lg:ml-auto" data-reveal>
   <div class="hero-photo-panel absolute -inset-3 sm:-right-5 sm:-bottom-5 sm:left-6 sm:top-6 rounded-[40px]" aria-hidden="true"></div>
   <div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl ring-1 ring-white/40">
   <img alt="Dr. Kishawn Kole-James with a teen patient holding a Superior Orthodontics welcome gift in Metro Detroit, MI" class="w-full h-full object-cover hero-ken-burns" src="images/patient-teen-gift-bag.jpg">
@@ -831,53 +831,6 @@
         }
     });
 
-    // Section-level fade-in on scroll into view (skips Hero — Hero uses its own load stagger)
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in-up');
-                sectionObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('section:not(#hero)').forEach(section => {
-        section.classList.add('opacity-0');
-        sectionObserver.observe(section);
-    });
-
-    // Count-up animation for stats bar numbers when they scroll into view
-    const animateCount = (el, target, duration = 1600) => {
-        const start = performance.now();
-        const prefix = el.dataset.prefix || '';
-        const suffix = el.dataset.suffix || '';
-        const step = (now) => {
-            const t = Math.min(1, (now - start) / duration);
-            const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-            const value = Math.round(target * eased);
-            el.textContent = `${prefix}${value.toLocaleString()}${suffix}`;
-            if (t < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-    };
-
-    // Real values live in the HTML (so no-JS, print, and screenshots never read "0").
-    // The count-up resets to 0 and climbs only once the bar first touches the viewport,
-    // so the reset is off-edge and imperceptible — and never fires if the section is
-    // never scrolled into view, leaving the real numbers intact.
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const countObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (!prefersReducedMotion) {
-                    animateCount(entry.target, parseFloat(entry.target.dataset.count));
-                }
-                countObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.01 });
-
-    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 
     // Before/After image slider — pointer drag + keyboard (arrows / Home / End)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {
@@ -918,4 +871,6 @@
 </script>
 
 
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+<script src="js/motion.js" defer></script>
 </body></html>

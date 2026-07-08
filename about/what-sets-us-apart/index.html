@@ -437,51 +437,6 @@
         }
     });
 
-    // Section-level fade-in on scroll into view (skips Hero — Hero uses its own load stagger)
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in-up');
-                sectionObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('section:not(#hero)').forEach(section => {
-        section.classList.add('opacity-0');
-        sectionObserver.observe(section);
-    });
-
-    // Count-up animation for stats bar numbers when they scroll into view
-    const animateCount = (el, target, duration = 1600) => {
-        const start = performance.now();
-        const prefix = el.dataset.prefix || '';
-        const suffix = el.dataset.suffix || '';
-        const step = (now) => {
-            const t = Math.min(1, (now - start) / duration);
-            const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-            const value = Math.round(target * eased);
-            el.textContent = `${prefix}${value.toLocaleString()}${suffix}`;
-            if (t < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-    };
-
-    // Real values live in the HTML; the count-up resets to 0 and climbs only once
-    // the bar first touches the viewport, so the reset is off-edge and imperceptible.
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const countObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (!prefersReducedMotion) {
-                    animateCount(entry.target, parseFloat(entry.target.dataset.count));
-                }
-                countObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.01 });
-
-    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 
     // Before/After image slider (drag to reveal)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {
@@ -504,4 +459,6 @@
         slider.addEventListener('pointerup', (e) => { dragging = false; try { slider.releasePointerCapture(e.pointerId); } catch (_) {} });
         slider.addEventListener('pointercancel', () => { dragging = false; });
     });
-</script></body></html>
+</script><script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+<script src="../../js/motion.js" defer></script>
+</body></html>

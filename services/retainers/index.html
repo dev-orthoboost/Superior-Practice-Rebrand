@@ -258,11 +258,11 @@
 <div class="w-full max-w-[1280px] mx-auto px-margin-page relative z-10">
 <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-16 items-center">
 <div class="max-w-2xl">
-<h1 class="font-headline-h1-mobile md:font-headline-h1 text-headline-h1-mobile md:text-headline-h1 text-primary mb-6 leading-tight hero-reveal hero-reveal-1">Keep the smile<br>you worked for.</h1>
-<p class="font-lead text-lead text-on-surface-variant mb-10 max-w-lg hero-reveal hero-reveal-2">
+<h1 class="font-headline-h1-mobile md:font-headline-h1 text-headline-h1-mobile md:text-headline-h1 text-primary mb-6 leading-tight" data-reveal>Keep the smile<br>you worked for.</h1>
+<p class="font-lead text-lead text-on-surface-variant mb-10 max-w-lg" data-reveal>
                         Braces and aligners do the hard work of straightening your teeth. Retainers do the equally important job of keeping them that way.
                     </p>
-<div class="flex flex-col sm:flex-row gap-4 hero-reveal hero-reveal-3">
+<div class="flex flex-col sm:flex-row gap-4" data-reveal>
 <a class="inline-flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold text-[17px] hover:brightness-110 hover:-translate-y-1 transition-ease-out group shadow-xl shadow-secondary/30 hover:scale-[1.02] hover:-translate-y-0.5" href="../../index.html#schedule">
                             Schedule Free Exam
                             <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-ease-out">arrow_forward</span>
@@ -273,7 +273,7 @@
                         </a>
 </div>
 </div>
-<div class="relative hero-reveal hero-reveal-4 lg:max-w-[400px] lg:ml-auto">
+<div class="relative lg:max-w-[400px] lg:ml-auto" data-reveal>
 <div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white">
 <img alt="Patient holding clear aligners offered at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover hero-ken-burns" src="../../images/clear-aligners.webp">
 </div>
@@ -472,46 +472,6 @@
         }
     });
 
-    // Section-level fade-in on scroll into view (skips Hero — Hero uses its own load stagger)
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in-up');
-                sectionObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('section:not(#hero)').forEach(section => {
-        section.classList.add('opacity-0');
-        sectionObserver.observe(section);
-    });
-
-    // Count-up animation for stats bar numbers when they scroll into view
-    const animateCount = (el, target, duration = 1600) => {
-        const start = performance.now();
-        const prefix = el.dataset.prefix || '';
-        const suffix = el.dataset.suffix || '';
-        const step = (now) => {
-            const t = Math.min(1, (now - start) / duration);
-            const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-            const value = Math.round(target * eased);
-            el.textContent = `${prefix}${value.toLocaleString()}${suffix}`;
-            if (t < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-    };
-
-    const countObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCount(entry.target, parseFloat(entry.target.dataset.count));
-                countObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 
     // Before/After image slider (drag to reveal)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {
@@ -535,4 +495,6 @@
         slider.addEventListener('pointercancel', () => { dragging = false; });
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+<script src="../../js/motion.js" defer></script>
 </body></html>
