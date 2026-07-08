@@ -603,49 +603,70 @@
 </div>
 </div>
 </section>
-<!-- Gift-bag photo wall — real patient candids, polaroid treatment -->
+<!-- Gift-bag photo carousel — real patient candids, polaroid treatment -->
 <style>
+.photo-carousel { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 28px 4px 32px; }
+.photo-carousel::-webkit-scrollbar { display: none; }
+.carousel-slide { scroll-snap-align: center; flex: 0 0 auto; width: min(300px, 78vw); }
 .polaroid { background: #fff; padding: 12px 12px 44px; box-shadow: 0 10px 30px -12px rgba(20,57,83,0.25); border: 1px solid #E8EDF3; position: relative; transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.45s cubic-bezier(0.165, 0.84, 0.44, 1); }
-.polaroid:hover { transform: rotate(0deg) translateY(-6px) scale(1.02); box-shadow: 0 18px 40px -14px rgba(20,57,83,0.35); z-index: 2; }
-.polaroid:nth-child(6n+1) { transform: rotate(-2.5deg); }
-.polaroid:nth-child(6n+2) { transform: rotate(1.8deg) translateY(14px); }
-.polaroid:nth-child(6n+3) { transform: rotate(-1.2deg); }
-.polaroid:nth-child(6n+4) { transform: rotate(2.4deg) translateY(10px); }
-.polaroid:nth-child(6n+5) { transform: rotate(-2deg); }
-.polaroid:nth-child(6n+6) { transform: rotate(1.4deg) translateY(16px); }
-.polaroid:nth-child(n):hover { transform: rotate(0deg) translateY(-6px) scale(1.02); }
-@media (prefers-reduced-motion: reduce) { .polaroid, .polaroid:hover { transition: none; } }
+.carousel-slide:nth-child(2n) .polaroid { transform: rotate(1.6deg); }
+.carousel-slide:nth-child(2n+1) .polaroid { transform: rotate(-1.8deg); }
+.carousel-slide .polaroid:hover { transform: rotate(0deg) translateY(-6px) scale(1.02); box-shadow: 0 18px 40px -14px rgba(20,57,83,0.35); z-index: 2; }
+.carousel-btn { width: 48px; height: 48px; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #DAE2EB; background: #fff; color: #143953; transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease; }
+.carousel-btn:hover:not(:disabled) { background: #143953; color: #fff; }
+.carousel-btn:disabled { opacity: 0.35; cursor: default; }
+@media (prefers-reduced-motion: reduce) { .polaroid, .carousel-slide .polaroid:hover { transition: none; } }
 </style>
-<section class="py-24 bg-white overflow-hidden">
+<section class="py-24 bg-white overflow-hidden" data-carousel-scope>
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
-<div class="text-center max-w-2xl mx-auto mb-16">
-<h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">The photo wall.</h2>
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-4">
+<div class="max-w-2xl">
+<h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Our photo wall.</h2>
 <p class="text-on-surface-variant text-lg">Every one of these was taken in our office. The pink gift bag comes standard.</p>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10" data-polaroid-wall>
+<div class="flex gap-3 self-start md:self-auto shrink-0">
+<button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous photos"><span class="material-symbols-outlined" aria-hidden="true">chevron_left</span></button>
+<button class="carousel-btn" type="button" data-carousel-next aria-label="Next photos"><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>
+</div>
+</div>
+</div>
+<div class="w-full max-w-[1280px] mx-auto px-margin-page">
+<div class="photo-carousel" data-carousel role="region" aria-label="Patient photos, scrollable" tabindex="0">
+<div class="carousel-slide">
 <div class="polaroid rounded-sm">
 <img alt="Two smiling Superior Orthodontics patients in front of the rainbow mirror with a pink gift bag" class="w-full aspect-[4/5] object-cover object-[50%_35%]" loading="lazy" src="images/patient-candid-rainbow.jpg">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">All smiles</p>
 </div>
+</div>
+<div class="carousel-slide">
 <div class="polaroid rounded-sm">
 <img alt="Dr. Kishawn Kole-James with a teen patient holding a Superior Orthodontics gift bag" class="w-full aspect-[4/5] object-cover object-[50%_25%]" loading="lazy" src="images/patient-candid-iceberg.jpg">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">Bag in hand</p>
 </div>
+</div>
+<div class="carousel-slide">
 <div class="polaroid rounded-sm">
 <img alt="Dr. Kishawn Kole-James with two patients giving thumbs up at Superior Orthodontics" class="w-full aspect-[4/5] object-cover object-[50%_30%]" loading="lazy" src="images/patient-candid-family.jpg">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">The whole crew</p>
 </div>
+</div>
+<div class="carousel-slide">
 <div class="polaroid rounded-sm">
 <img alt="Dr. Kishawn Kole-James with a patient under the Superior Orthodontics sign" class="w-full aspect-[4/5] object-cover object-[50%_28%]" loading="lazy" src="images/patient-candid-friends.jpg">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">Another visit in the books</p>
 </div>
+</div>
+<div class="carousel-slide">
 <div class="polaroid rounded-sm">
 <img alt="Dr. Kishawn Kole-James with two patients in front of the Live Your Best Smile neon sign" class="w-full aspect-[4/5] object-cover object-[50%_35%]" loading="lazy" src="images/patient-candid-neon.jpg">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">The wall says it all</p>
 </div>
+</div>
+<div class="carousel-slide">
 <div class="polaroid rounded-sm">
 <img alt="Dr. Kishawn Kole-James with a patient holding the Superior Orthodontics pink gift bag" class="w-full aspect-[4/5] object-cover object-[50%_30%]" loading="lazy" src="images/patient-candid-giftbag.jpg">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">The famous pink bag</p>
+</div>
 </div>
 </div>
 </div>

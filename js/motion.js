@@ -1,5 +1,8 @@
 // js/motion.js — Superior Orthodontics shared motion (anime.js v3)
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// anime v3 pauses its RAF engine whenever the tab loses focus (suspendWhenDocumentHidden
+// defaults to true). That silently freezes count-ups mid-run, so turn it off.
+if (typeof anime !== 'undefined') anime.suspendWhenDocumentHidden = false;
 // 1. Hero load stagger (replaces .hero-reveal-N CSS delays)
 if (!reduced) anime({ targets: '#hero [data-reveal]', translateY: [24, 0], opacity: [0, 1],
   delay: anime.stagger(110), duration: 700, easing: 'easeOutCubic' });
@@ -41,29 +44,51 @@ if (pm) {
   };
   const valEl = pm.querySelector('[data-price-value]'), unitEl = pm.querySelector('[data-price-unit]'),
         noteEl = pm.querySelector('[data-price-note]'), chips = pm.querySelectorAll('.price-chip');
-  let current = 188;
+  let current = 188, raf = null;
+  // Self-contained rAF count-up — no anime dependency, and the final value is
+  // always set (instantly when reduced-motion or the tab is hidden), so the
+  // number can never get stuck partway.
+  const tween = (from, to, dec) => {
+    if (raf) cancelAnimationFrame(raf);
+    if (reduced || document.hidden) { valEl.textContent = '$' + to.toFixed(dec); return; }
+    const dur = 500, start = performance.now();
+    const step = now => {
+      const t = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - t, 3);
+      valEl.textContent = '$' + (from + (to - from) * e).toFixed(dec);
+      if (t < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  };
   chips.forEach(chip => chip.addEventListener('click', () => {
     const v = views[chip.dataset.per];
     if (!v) return;
-    chips.forEach(c => { c.classList.toggle('is-active', c === chip); c.setAttribute('aria-pressed', c === chip); });
+    chips.forEach(c => { const on = c === chip; c.classList.toggle('is-active', on); c.setAttribute('aria-pressed', on); });
     unitEl.textContent = v.unit; noteEl.textContent = v.note;
-    if (reduced) { valEl.textContent = '$' + v.n.toFixed(v.dec); current = v.n; return; }
-    const o = { n: current };
-    anime({ targets: o, n: v.n, duration: 550, easing: 'easeOutCubic',
-      update: () => valEl.textContent = '$' + o.n.toFixed(v.dec) });
+    tween(current, v.n, v.dec);
     current = v.n;
   }));
 }
-// 6. Polaroid wall — settle in one by one with their resting tilt
-const wall = document.querySelector('[data-polaroid-wall]');
-if (wall && !reduced) {
-  const cards = wall.querySelectorAll('.polaroid');
-  cards.forEach(c => c.style.opacity = 0);
-  const wallIO = new IntersectionObserver(entries => entries.forEach(e => {
-    if (!e.isIntersecting) return; wallIO.unobserve(e.target);
-    // Opacity-only stagger: the resting tilt lives in CSS transforms, which anime must not touch.
-    anime({ targets: e.target.querySelectorAll('.polaroid'), opacity: [0, 1],
-      delay: anime.stagger(130), duration: 750, easing: 'easeOutCubic' });
-  }), { threshold: 0.15 });
-  wallIO.observe(wall);
-}
+// 6. Photo carousel — native scroll-snap track with prev/next controls.
+// Buttons scroll by one card; native smooth-scroll needs no anime, so this
+// works regardless of the animation engine.
+document.querySelectorAll('[data-carousel]').forEach(track => {
+  const scope = track.closest('[data-carousel-scope]') || track.parentElement;
+  const prev = scope.querySelector('[data-carousel-prev]');
+  const next = scope.querySelector('[data-carousel-next]');
+  const stepBy = () => {
+    const slide = track.querySelector('.carousel-slide');
+    const gap = parseFloat(getComputedStyle(track).columnGap || '24') || 24;
+    return slide ? slide.getBoundingClientRect().width + gap : track.clientWidth;
+  };
+  const sync = () => {
+    const atStart = track.scrollLeft <= 4;
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    if (prev) { prev.disabled = atStart; prev.setAttribute('aria-disabled', atStart); }
+    if (next) { next.disabled = atEnd; next.setAttribute('aria-disabled', atEnd); }
+  };
+  if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -stepBy(), behavior: reduced ? 'auto' : 'smooth' }));
+  if (next) next.addEventListener('click', () => track.scrollBy({ left: stepBy(), behavior: reduced ? 'auto' : 'smooth' }));
+  track.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
+});
