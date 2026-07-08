@@ -25,6 +25,15 @@ Page-slot assignments below follow the Slot map in `docs/superpowers/plans/2026-
 | `dr-kole-james-teen-patient.jpg` | Winners, file id `1dQFC-6YXR6kFcrYZCI30fsPY_o7bw6VC` ("Copy of IMG_3538.jpg") | Early-orthodontics / braces-for-teens page — candid patient (inferred) | "Dr. Kishawn Kole-James with a teen patient at Superior Orthodontics" |
 | `staff-headshot-1.jpg` | Live site: `2025/03/IMG_2336-scaled.jpg` | Team page — individual staff headshot (inferred) | "Superior Orthodontics team member headshot" |
 | `staff-headshot-2.jpg` | Live site: `2025/03/IMG_2364-scaled.jpg` | Team page — individual staff headshot (inferred) | "Superior Orthodontics team member headshot" |
+| `office-treatment-room.jpg` | Winners: `IMG_2468.PNG` (2026-07-08 pull) | Homepage + locations Southfield cards — treatment room, doctor standing | "Dr. Kishawn Kole-James standing in the treatment room at the Southfield, MI office" |
+| `patient-candid-rainbow.jpg` | Winners: `Copy of IMG_20240224_095026_478.jpg` (2026-07-08 pull) | Homepage photo wall — couple at rainbow mirror with gift bag | "Two smiling patients in front of the rainbow mirror with a pink gift bag" |
+| `patient-candid-iceberg.jpg` | Winners: `Copy of IMG_20240408_153532_264.jpg` (2026-07-08 pull) | Homepage photo wall — teen patient with gift bag, iceberg art | "Dr. Kole-James with a teen patient holding a gift bag" |
+| `patient-candid-family.jpg` | Winners: `Copy of IMG_3073.jpg` (2026-07-08 pull) | Homepage photo wall — doctor with two patients, thumbs up | "Dr. Kole-James with two patients giving thumbs up" |
+| `patient-candid-friends.jpg` | Winners: `Copy of IMG_8335.jpg` (2026-07-08 pull) | Homepage photo wall — two patients under office sign | "Dr. Kole-James with a patient under the Superior Orthodontics sign" |
+| `patient-candid-neon.jpg` | Winners: `msg6344038813-32176.jpg` (2026-07-08 pull) | Homepage photo wall — patients at "Live Your Best Smile" neon wall | "Dr. Kole-James with two patients in front of the Live Your Best Smile neon sign" |
+| `patient-candid-giftbag.jpg` | Winners: `msg6344038813-32243.jpg` (2026-07-08 pull) | Homepage photo wall — patient with the pink gift bag | "Dr. Kole-James with a patient holding the pink gift bag" |
+
+**Note (2026-07-08):** the Winners "office" shots (`IMG_2465/2466/2468.PNG`) could not be attributed to a specific office from the photos alone. Working assumption per Jules: gray Superior sign wall = Eastpointe, blue-chair treatment room = Southfield. Client should confirm before domain cutover.
 
 ## Slot-map coverage check (against Task 4 minimum slot map)
 
