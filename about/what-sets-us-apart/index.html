@@ -85,13 +85,6 @@
         }
     </script>
 <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-        }
         body {
             font-family: 'Bricolage Grotesque', sans-serif;
             font-optical-sizing: auto;
@@ -118,18 +111,6 @@
         .service-card { transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .service-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px -8px rgba(20, 57, 83, 0.12); }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-
-        /* Hero load stagger - feels deliberate but not slow */
-        @keyframes heroFadeUp {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .hero-reveal { opacity: 0; animation: heroFadeUp 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
-        .hero-reveal-1 { animation-delay: 0.05s; }
-        .hero-reveal-2 { animation-delay: 0.20s; }
-        .hero-reveal-3 { animation-delay: 0.35s; }
-        .hero-reveal-4 { animation-delay: 0.50s; }
-        .hero-reveal-5 { animation-delay: 0.15s; }
 
         /* Hero loops — subtle, always-on accents that add life */
         @keyframes heroBob {
@@ -196,8 +177,6 @@
 
         /* Respect users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            .hero-reveal,
-            .animate-fade-in-up { animation: none !important; opacity: 1 !important; transform: none !important; }
             *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
         }
     </style>
@@ -244,7 +223,7 @@
 </header>
 <main>
 <!-- Page Header Band -->
-<section class="pt-20 pb-12 md:pt-28 md:pb-16 bg-surface opacity-0 animate-fade-in-up">
+<section class="pt-20 pb-12 md:pt-28 md:pb-16 bg-surface">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="max-w-3xl">
 <h1 class="font-headline-h1 text-primary mb-6 text-[clamp(2.25rem,1rem+3.6vw,4.5rem)] leading-[1.02] tracking-[-0.025em] [text-wrap:balance]">Why Superior Orthodontics?</h1>
@@ -253,7 +232,7 @@
 </div>
 </section>
 <!-- Value Props (Grid of expanded cards) -->
-<section class="pb-24 bg-surface opacity-0 animate-fade-in-up">
+<section class="pb-24 bg-surface">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- Affordable — lead value prop, filled navy for weight -->
@@ -292,7 +271,7 @@
 </div>
 </section>
 <!-- What Makes Us Different (Asymmetric image/text) -->
-<section class="py-24 bg-white opacity-0 animate-fade-in-up">
+<section class="py-24 bg-white">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 <div class="relative group">
@@ -326,7 +305,7 @@
 </div>
 </section>
 <!-- Stats Bar (Navy) -->
-<section class="bg-primary py-10 border-y border-white/5 opacity-0 animate-fade-in-up">
+<section class="bg-primary py-10 border-y border-white/5">
 <div class="max-w-[1280px] mx-auto px-margin-page grid grid-cols-2 md:grid-cols-4 gap-8">
 <div class="text-center">
 <p class="text-surface font-display-xl text-3xl font-bold mb-1" data-count="5000" data-suffix="+">5,000+</p>
@@ -347,7 +326,7 @@
 </div>
 </section>
 <!-- Schedule CTA Band (Full-bleed primary) -->
-<section class="bg-primary opacity-0 animate-fade-in-up" id="schedule">
+<section class="bg-primary" id="schedule">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page py-24 md:py-28 text-center">
 <div class="max-w-2xl mx-auto">
 <h2 class="font-headline-h2 text-headline-h2 text-white mb-6">Ready to get started?</h2>
@@ -436,7 +415,6 @@
             nav.classList.remove('sticky-nav-scroll');
         }
     });
-
 
     // Before/After image slider (drag to reveal)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {

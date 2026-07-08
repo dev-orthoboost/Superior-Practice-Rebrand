@@ -85,13 +85,6 @@
         }
     </script>
 <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-        }
         body {
             font-family: 'Bricolage Grotesque', sans-serif;
             font-optical-sizing: auto;
@@ -118,18 +111,6 @@
         .service-card { transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .service-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px -8px rgba(20, 57, 83, 0.12); }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-
-        /* Hero load stagger - feels deliberate but not slow */
-        @keyframes heroFadeUp {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .hero-reveal { opacity: 0; animation: heroFadeUp 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
-        .hero-reveal-1 { animation-delay: 0.05s; }
-        .hero-reveal-2 { animation-delay: 0.20s; }
-        .hero-reveal-3 { animation-delay: 0.35s; }
-        .hero-reveal-4 { animation-delay: 0.50s; }
-        .hero-reveal-5 { animation-delay: 0.15s; }
 
         /* Hero loops — subtle, always-on accents that add life */
         @keyframes heroBob {
@@ -196,8 +177,6 @@
 
         /* Respect users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            .hero-reveal,
-            .animate-fade-in-up { animation: none !important; opacity: 1 !important; transform: none !important; }
             *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
         }
     </style>
@@ -295,7 +274,7 @@
 </div>
 </section>
 <!-- Overview Section -->
-<section class="py-24 bg-surface opacity-0 animate-fade-in-up">
+<section class="py-24 bg-surface">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 <div class="relative group">
@@ -330,7 +309,7 @@
 </div>
 </section>
 <!-- Sports & mouthguards -->
-<section class="py-24 bg-paper-50 opacity-0 animate-fade-in-up">
+<section class="py-24 bg-paper-50">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-3xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Sports and braces can mix</h2>
@@ -364,7 +343,7 @@
 </div>
 </section>
 <!-- Benefits: confidence + color options -->
-<section class="py-24 bg-surface opacity-0 animate-fade-in-up">
+<section class="py-24 bg-surface">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-3xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Why Teens Do Well With Braces Here</h2>
@@ -404,7 +383,7 @@
 </div>
 </section>
 <!-- Mini FAQ Section -->
-<section class="py-24 bg-paper-50 opacity-0 animate-fade-in-up">
+<section class="py-24 bg-paper-50">
 <div class="w-full max-w-[800px] mx-auto px-margin-page">
 <div class="text-center mb-12">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Teen Braces, Answered</h2>
@@ -451,7 +430,7 @@
 </div>
 </section>
 <!-- Cross-links -->
-<section class="py-24 bg-white opacity-0 animate-fade-in-up">
+<section class="py-24 bg-white">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-2xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Explore Other Treatments</h2>
@@ -486,7 +465,7 @@
 </div>
 </section>
 <!-- CTA Band — FULL-BLEED navy -->
-<section class="py-28 md:py-32 bg-primary relative overflow-hidden opacity-0 animate-fade-in-up text-center md:text-left">
+<section class="py-28 md:py-32 bg-primary relative overflow-hidden text-center md:text-left">
 <!-- Decorative blobs anchored to viewport edges -->
 <div class="absolute -top-32 -right-32 w-[28rem] h-[28rem] bg-secondary/10 rounded-full blur-3xl"></div>
 <div class="absolute -bottom-32 -left-32 w-[28rem] h-[28rem] bg-secondary/10 rounded-full blur-3xl"></div>
@@ -607,7 +586,6 @@
             nav.classList.remove('sticky-nav-scroll');
         }
     });
-
 
     // Before/After image slider (drag to reveal)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {

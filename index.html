@@ -85,13 +85,6 @@
         }
     </script>
 <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-        }
         body {
             font-family: 'Bricolage Grotesque', sans-serif;
             font-optical-sizing: auto;
@@ -123,18 +116,6 @@
         .btn-pop { box-shadow: 0 12px 30px -8px rgba(212, 92, 132, 0.55); transition: box-shadow 0.4s cubic-bezier(0.165,0.84,0.44,1), transform 0.4s cubic-bezier(0.165,0.84,0.44,1), filter 0.3s ease; }
         .btn-pop:hover { box-shadow: 0 20px 48px -10px rgba(212, 92, 132, 0.72); }
         @media (prefers-reduced-motion: reduce) { .btn-pop { transition: none; } }
-
-        /* Hero load stagger - feels deliberate but not slow */
-        @keyframes heroFadeUp {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .hero-reveal { opacity: 0; animation: heroFadeUp 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
-        .hero-reveal-1 { animation-delay: 0.05s; }
-        .hero-reveal-2 { animation-delay: 0.20s; }
-        .hero-reveal-3 { animation-delay: 0.35s; }
-        .hero-reveal-4 { animation-delay: 0.50s; }
-        .hero-reveal-5 { animation-delay: 0.15s; }
 
         /* Hero loops — subtle, always-on accents that add life */
         @keyframes heroBob {
@@ -201,8 +182,6 @@
 
         /* Respect users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            .hero-reveal,
-            .animate-fade-in-up { animation: none !important; opacity: 1 !important; transform: none !important; }
             *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
         }
     </style>
@@ -340,7 +319,7 @@
 .whyus-row { display: flex; gap: 1.25rem; padding: 1.05rem 0; align-items: flex-start; }
 .whyus-row + .whyus-row { border-top: 1px solid #DAE2EB; }
 </style>
-<section id="why-us" class="bg-surface py-[3.6rem] opacity-0 animate-fade-in-up">
+<section id="why-us" class="bg-surface py-[3.6rem]">
   <div class="w-full max-w-[1280px] mx-auto px-margin-page">
   <div class="whyus-grid">
   <div class="whyus-head max-w-md">
@@ -369,7 +348,7 @@
   </div>
   </section>
 <!-- Treatments Section -->
-<section class="py-24 bg-paper-50 opacity-0 animate-fade-in-up" id="treatments">
+<section class="py-24 bg-paper-50" id="treatments">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
 <div class="max-w-xl">
@@ -419,7 +398,7 @@
 </div>
 </section>
 <!-- Doctor Bio Section -->
-<section class="py-24 bg-surface opacity-0 animate-fade-in-up" id="about">
+<section class="py-24 bg-surface" id="about">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 <div class="relative group">
@@ -454,7 +433,7 @@
 </div>
 </section>
 <!-- Before/After Smile Gallery — ASYMMETRIC FOCAL POINT with interactive slider -->
-<section class="py-24 md:py-32 bg-white relative overflow-hidden opacity-0 animate-fade-in-up">
+<section class="py-24 md:py-32 bg-white relative overflow-hidden">
 <div class="w-full max-w-[1440px] mx-auto px-margin-page">
 <div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-16 items-center">
 <!-- Left column: copy -->
@@ -490,7 +469,7 @@
 </div>
 </section>
 <!-- Testimonials — ASYMMETRIC (heading-left, cards-right) on wider container -->
-<section class="py-24 bg-navy-50/30 opacity-0 animate-fade-in-up">
+<section class="py-24 bg-navy-50/30">
 <div class="w-full max-w-[1440px] mx-auto px-margin-page">
 <div class="grid grid-cols-1 lg:grid-cols-[4fr_8fr] gap-12 lg:gap-20 items-start">
 <!-- Left column: heading + intro + Google chip -->
@@ -573,7 +552,7 @@
 </section>
 <!-- Pricing CTA — FULL-BLEED navy (no inner box, edge-to-edge) -->
 
-<section class="py-28 md:py-32 bg-primary relative overflow-hidden opacity-0 animate-fade-in-up text-center md:text-left">
+<section class="py-28 md:py-32 bg-primary relative overflow-hidden text-center md:text-left">
 <!-- Decorative blobs anchored to viewport edges -->
 <div class="absolute -top-32 -right-32 w-[28rem] h-[28rem] bg-secondary/10 rounded-full blur-3xl"></div>
 <div class="absolute -bottom-32 -left-32 w-[28rem] h-[28rem] bg-secondary/10 rounded-full blur-3xl"></div>
@@ -622,7 +601,7 @@
 
 <!-- Locations Section -->
 <!-- What to Expect Section -->
-<section class="py-24 bg-paper-50 opacity-0 animate-fade-in-up">
+<section class="py-24 bg-paper-50">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-3xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">What to Expect at Your First Visit</h2>
@@ -664,7 +643,7 @@
 <a class="btn-pop inline-flex items-center justify-center bg-secondary text-white px-10 py-4 rounded-full font-bold text-[18px] hover:brightness-110 hover:-translate-y-1 transition-ease-out" href="#schedule">Schedule Your Free Exam Today</a>
 </div>
 </div>
-</section><section class="py-24 bg-surface opacity-0 animate-fade-in-up" id="faq">
+</section><section class="py-24 bg-surface" id="faq">
 <div class="w-full max-w-[800px] mx-auto px-margin-page">
 <div class="text-center mb-12">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Common Questions</h2>
@@ -700,7 +679,7 @@
 </details>
 </div>
 </div>
-</section><section class="py-24 bg-white opacity-0 animate-fade-in-up" id="locations">
+</section><section class="py-24 bg-white" id="locations">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-2xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Our Clinics</h2>
@@ -831,7 +810,6 @@
         }
     });
 
-
     // Before/After image slider — pointer drag + keyboard (arrows / Home / End)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {
         const after = slider.querySelector('.ba-after');
@@ -869,7 +847,6 @@
         });
     });
 </script>
-
 
 <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
 <script src="js/motion.js" defer></script>

@@ -85,13 +85,6 @@
         }
     </script>
 <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-        }
         body {
             font-family: 'Bricolage Grotesque', sans-serif;
             font-optical-sizing: auto;
@@ -119,18 +112,6 @@
         .service-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px -8px rgba(20, 57, 83, 0.12); }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 
-        /* Hero load stagger - feels deliberate but not slow */
-        @keyframes heroFadeUp {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .hero-reveal { opacity: 0; animation: heroFadeUp 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
-        .hero-reveal-1 { animation-delay: 0.05s; }
-        .hero-reveal-2 { animation-delay: 0.20s; }
-        .hero-reveal-3 { animation-delay: 0.35s; }
-        .hero-reveal-4 { animation-delay: 0.50s; }
-        .hero-reveal-5 { animation-delay: 0.15s; }
-
         /* Hover: pink icon tile gently scales + tilts on parent card hover */
         .icon-tile { transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .service-card:hover .icon-tile { transform: scale(1.08) rotate(-4deg); }
@@ -151,8 +132,6 @@
 
         /* Respect users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            .hero-reveal,
-            .animate-fade-in-up { animation: none !important; opacity: 1 !important; transform: none !important; }
             *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
         }
     </style>
@@ -199,7 +178,7 @@
 </header>
 <main>
 <!-- Page Header -->
-<section class="pt-24 pb-16 bg-paper-50 opacity-0 animate-fade-in-up">
+<section class="pt-24 pb-16 bg-paper-50">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="max-w-3xl">
 <h1 class="font-headline-h1 text-headline-h1-mobile md:text-headline-h1 text-primary mb-6">Treatment for every age, every budget.</h1>
@@ -208,7 +187,7 @@
 </div>
 </section>
 <!-- Treatments Grid -->
-<section class="py-24 bg-white opacity-0 animate-fade-in-up" id="treatments">
+<section class="py-24 bg-white" id="treatments">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="text-center max-w-2xl mx-auto mb-16">
 <h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">Our Treatments</h2>
@@ -256,7 +235,7 @@
 </div>
 </section>
 <!-- Not sure which is right helper section -->
-<section class="py-24 bg-paper-50 opacity-0 animate-fade-in-up">
+<section class="py-24 bg-paper-50">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page">
 <div class="bg-white rounded-3xl border border-navy-50 shadow-md overflow-hidden">
 <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
@@ -293,7 +272,7 @@
 </div>
 </section>
 <!-- Schedule CTA Band -->
-<section class="bg-primary py-24 opacity-0 animate-fade-in-up" id="schedule">
+<section class="bg-primary py-24" id="schedule">
 <div class="w-full max-w-[1280px] mx-auto px-margin-page text-center">
 <h2 class="font-headline-h2 text-headline-h2 text-white mb-6 max-w-3xl mx-auto">Ready to get started?</h2>
 <p class="text-navy-100/70 text-lead leading-relaxed mb-10 max-w-2xl mx-auto">Book your free exam today, a $99 value. Plans start at $188/month with $1,000 down and 0% in-house financing for qualifying patients.</p>
@@ -378,7 +357,6 @@
             nav.classList.remove('sticky-nav-scroll');
         }
     });
-
 
     // Before/After image slider (drag to reveal)
     document.querySelectorAll('[data-ba-slider]').forEach(slider => {
