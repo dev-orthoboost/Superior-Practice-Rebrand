@@ -24,15 +24,34 @@ const statIO = new IntersectionObserver(entries => entries.forEach(e => {
     update: () => e.target.textContent = o.n.toLocaleString() + suffix });
 }), { threshold: 0.6 });
 document.querySelectorAll('[data-count]').forEach(el => statIO.observe(el));
-// 4. Infinite marquees — clone the set once (aria-hidden) so the CSS loop is seamless.
-// Without JS the single set just sits still, so nothing jumps.
+// 4. Infinite marquees — clone the set enough times to always cover the viewport,
+// then scroll by the measured pixel distance between set 1 and set 2 (a -50%
+// keyframe jumps on subpixel widths, and a single clone leaves a blank gap when
+// the viewport is wider than one set). Without JS the single set just sits still.
 document.querySelectorAll('[data-marquee]').forEach(m => {
   const track = m.querySelector('.mq-track'), set = m.querySelector('.mq-set');
-  if (!track || !set) return;
-  const clone = set.cloneNode(true);
-  clone.setAttribute('aria-hidden', 'true');
-  track.appendChild(clone);
-  track.classList.add('is-cloned');
+  if (!track || !set || reduced) return;
+  const size = () => {
+    const setW = set.getBoundingClientRect().width;
+    if (!setW) return;
+    const need = Math.max(2, Math.ceil(m.clientWidth / setW) + 1);
+    for (let i = track.querySelectorAll('.mq-set').length; i < need; i++) {
+      const clone = set.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    }
+    const sets = track.querySelectorAll('.mq-set');
+    const period = sets[1].getBoundingClientRect().left - sets[0].getBoundingClientRect().left;
+    track.style.setProperty('--mq-shift', -period + 'px');
+    track.classList.add('is-cloned');
+  };
+  size();
+  // Re-measure whenever the set or viewport actually changes size — the Tailwind
+  // CDN compiles styles after this script runs, so the first measurement can be
+  // wrong; a bare resize listener misses that.
+  if (window.ResizeObserver) { const ro = new ResizeObserver(size); ro.observe(m); ro.observe(set); }
+  else addEventListener('resize', size);
+  if (document.fonts) document.fonts.ready.then(size);
 });
 // 5. Price math toggle — same $188/mo plan, shown per month/week/day
 const pm = document.querySelector('[data-price-math]');

@@ -1,6 +1,6 @@
 import re, sys, pathlib, json
 root = pathlib.Path(__file__).resolve().parents[1]
-BASE = 'https://jules-orthoboost.github.io/Superior-Practice-Rebrand/'
+BASE = 'https://dev-orthoboost.github.io/Superior-Practice-Rebrand/'
 pages = [p for p in root.rglob('index.html') if not any(x in p.parts for x in ('.git','docs','node_modules'))]
 titles, descs, errors = {}, {}, []
 for p in pages:
