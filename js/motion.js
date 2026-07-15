@@ -3,10 +3,9 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 // anime v3 pauses its RAF engine whenever the tab loses focus (suspendWhenDocumentHidden
 // defaults to true). That silently freezes count-ups mid-run, so turn it off.
 if (typeof anime !== 'undefined') anime.suspendWhenDocumentHidden = false;
-// 1. Hero load stagger (replaces .hero-reveal-N CSS delays)
-if (!reduced) anime({ targets: '#hero [data-reveal]', translateY: [24, 0], opacity: [0, 1],
-  delay: anime.stagger(110), duration: 700, easing: 'easeOutCubic' });
-else document.querySelectorAll('#hero [data-reveal]').forEach(el => el.style.opacity = 1);
+// 1. Hero load stagger is pure CSS now (#hero [data-reveal] + --ri delay in css/input.css).
+// Keeping it out of JS lets the hero text paint at first render (LCP) instead of
+// waiting for this script; prefers-reduced-motion is handled in the CSS too.
 // 2. Scroll section reveal (replaces .animate-fade-in-up observer)
 const io = new IntersectionObserver(entries => entries.forEach(e => {
   if (!e.isIntersecting) return; io.unobserve(e.target);

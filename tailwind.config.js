@@ -4,7 +4,7 @@ module.exports = {
                 extend: {
                     "colors": {
                         "primary": "#143953",
-                        "secondary": "#D45C84",
+                        "secondary": "#CD406F",
                         "surface": "#f9f9ff",
                         "surface-dim": "#cbdbf8",
                         "surface-bright": "#f9f9ff",
@@ -19,7 +19,7 @@ module.exports = {
                         "outline-variant": "#c2c7ce",
                         "primary-container": "#143953",
                         "on-primary-container": "#ffffff",
-                        "secondary-container": "#D45C84",
+                        "secondary-container": "#CD406F",
                         "on-secondary-container": "#ffffff",
                         "navy-50": "#EEF2F6",
                         "navy-100": "#DAE2EB",
