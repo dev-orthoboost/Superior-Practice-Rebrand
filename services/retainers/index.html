@@ -2,88 +2,11 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Retainers in Metro Detroit | Superior Orthodontics</title>
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <!-- Design System Fonts: Bricolage Grotesque -->
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "primary": "#143953",
-                        "secondary": "#D45C84",
-                        "surface": "#f9f9ff",
-                        "surface-dim": "#cbdbf8",
-                        "surface-bright": "#f9f9ff",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f0f3ff",
-                        "surface-container": "#e7eeff",
-                        "surface-container-high": "#dee9ff",
-                        "surface-container-highest": "#d5e3ff",
-                        "on-surface": "#0c1c31",
-                        "on-surface-variant": "#42474d",
-                        "outline": "#73777e",
-                        "outline-variant": "#c2c7ce",
-                        "primary-container": "#143953",
-                        "on-primary-container": "#ffffff",
-                        "secondary-container": "#D45C84",
-                        "on-secondary-container": "#ffffff",
-                        "navy-50": "#EEF2F6",
-                        "navy-100": "#DAE2EB",
-                        "navy-200": "#B2C0D1",
-                        "ink-700": "#122236",
-                        "paper-50": "#F7F9FC",
-                        "paper-100": "#EFF2F7"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.5rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "margin-page": "32px",
-                        "space-10": "72px",
-                        "space-12": "128px",
-                        "space-1": "4px",
-                        "space-2": "8px",
-                        "space-6": "24px",
-                        "gutter": "24px",
-                        "space-8": "40px",
-                        "space-4": "16px"
-                    },
-                    "fontFamily": {
-                        "display-xl": ["Bricolage Grotesque", "sans-serif"],
-                        "body-md": ["Bricolage Grotesque", "sans-serif"],
-                        "label-eyebrow": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h1-mobile": ["Bricolage Grotesque", "sans-serif"],
-                        "lead": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h1": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h4": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h3": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h2": ["Bricolage Grotesque", "sans-serif"]
-                    },
-                    "fontSize": {
-                        "display-xl": ["76px", { "lineHeight": "0.98", "letterSpacing": "-0.025em", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "1.45", "fontWeight": "400" }],
-                        "label-eyebrow": ["12px", { "lineHeight": "1.45", "letterSpacing": "0.14em", "fontWeight": "700" }],
-                        "headline-h1-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "700" }],
-                        "lead": ["20px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "headline-h1": ["60px", { "lineHeight": "1.08", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "headline-h4": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
-                        "headline-h3": ["30px", { "lineHeight": "1.08", "fontWeight": "600" }],
-                        "headline-h2": ["42px", { "lineHeight": "1.1", "fontWeight": "600" }]
-                    }
-                }
-            }
-        }
-    </script>
+<link rel="preload" href="../../fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/material-symbols-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../images/clear-aligners.webp" as="image" fetchpriority="high">
+<link rel="stylesheet" href="../../css/styles.css">
 <style>
         body {
             font-family: 'Bricolage Grotesque', sans-serif;
@@ -261,7 +184,7 @@
 </div>
 <div class="relative lg:max-w-[400px] lg:ml-auto" data-reveal>
 <div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white">
-<img alt="Patient holding clear aligners offered at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_30%] hero-ken-burns" src="../../images/clear-aligners.webp">
+<img width="372" height="372" fetchpriority="high" alt="Patient holding clear aligners offered at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_30%] hero-ken-burns" src="../../images/clear-aligners.webp">
 </div>
 <div class="absolute -bottom-6 bg-white p-5 rounded-2xl shadow-xl border border-navy-50 flex items-center gap-4 -left-6 hero-bob">
 <div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-secondary">
@@ -308,7 +231,7 @@
 <div class="relative group">
 <div class="absolute -inset-4 bg-secondary/5 rounded-[40px] transition-ease-out group-hover:bg-secondary/10"></div>
 <div class="relative rounded-[32px] overflow-hidden shadow-2xl border-4 border-white">
-<img alt="Patient with a finished orthodontic smile at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_30%]" src="../../images/dr-kole-james-patient-thumbsup.jpg">
+<img width="1200" height="1600" alt="Patient with a finished orthodontic smile at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_30%]" src="../../images/dr-kole-james-patient-thumbsup.webp">
 </div>
 </div>
 <div>

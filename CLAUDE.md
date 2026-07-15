@@ -45,9 +45,10 @@ Static, content-complete 16-page website for **Superior Orthodontics** (Dr. Kish
 
 ## Tech stack
 
-- **Tailwind CSS via CDN** (`cdn.tailwindcss.com?plugins=forms,container-queries`) — dev-only, intentional. The console warning about production use is expected and safe to ignore; don't add a build step unless explicitly asked.
-- **Bricolage Grotesque** (Google Fonts variable) for all text. No second font family.
-- **Material Symbols Outlined** for icons.
+- **Tailwind CSS v3, compiled** (2026-07-15 Lighthouse pass; replaced the old Play CDN). Config lives in `tailwind.config.js` (the former inline config, now shared by all pages), source in `css/input.css`, committed output in `css/styles.css`. **After adding/renaming any Tailwind class in HTML or `js/`, rebuild:** `npm run build:css` (or `npm run watch:css` while iterating). `node_modules/` is gitignored; run `npm i` once per clone.
+- **Bricolage Grotesque** — self-hosted variable woff2 in `fonts/` (latin + latin-ext), `@font-face` in `css/input.css`, preloaded in every page head. No Google Fonts requests anymore; no second font family.
+- **Material Symbols Outlined** — self-hosted **57-glyph subset** (`fonts/material-symbols-subset.woff2`, 24KB). **Gotcha: using a NEW icon name requires re-subsetting** — re-download from `fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=<sorted,csv,of,ALL,used,icons>&display=block` (browser UA header for woff2), else the new icon renders as its ligature text.
+- **Images:** page-referenced photos are right-sized WebP (max 1600px long side, q78). Original JPGs stay in `images/` as manifest-tracked sources — new photos should get the same WebP treatment before being referenced. Every `<img>` carries `width`/`height` (CLS); each page's hero image is `<link rel="preload" as="image">`-ed with `fetchpriority="high"`. `og:image` metas intentionally stay `.jpg`.
 - **anime.js v3** (`cdn.jsdelivr.net/npm/animejs@3.2.2`) + `js/motion.js` — the shared motion system, loaded on every page:
   - Hero load stagger: elements with `data-reveal` inside `#hero` animate in on page load (translateY + opacity, staggered).
   - Section scroll reveal: an IntersectionObserver applies the same translateY/opacity animation to `main section:not(#hero)` as they scroll into view.
@@ -111,7 +112,7 @@ python scripts/check-seo.py     # meta tags, canonical URLs, sitemap coverage, e
 
 ## Don'ts / gotchas
 
-- Don't bump Tailwind to a build setup — the CDN approach is intentional; this static site is production, and a build step is out of scope unless explicitly asked.
+- Don't reintroduce `cdn.tailwindcss.com` or Google Fonts `<link>`s — CSS is compiled (`npm run build:css`) and fonts are self-hosted as of the 2026-07-15 Lighthouse pass. Editing classes without rebuilding `css/styles.css` silently ships unstyled markup.
 - Don't add a second font family — Bricolage Grotesque only.
 - Don't move any page's hero out of `<section id="hero">` — `js/motion.js` specifically targets `#hero [data-reveal]` for the load-stagger animation and excludes `#hero` from the scroll-reveal observer.
 - Don't `git config --global` anything — this repo's commits use env-var identity so the user's machine-wide git config stays untouched.

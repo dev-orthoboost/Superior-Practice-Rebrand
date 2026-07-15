@@ -2,88 +2,11 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Orthodontist in Eastpointe & Southfield, MI | Superior Orthodontics</title>
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <!-- Design System Font: Bricolage Grotesque (variable — used for all text) -->
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "primary": "#143953",
-                        "secondary": "#D45C84",
-                        "surface": "#f9f9ff",
-                        "surface-dim": "#cbdbf8",
-                        "surface-bright": "#f9f9ff",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f0f3ff",
-                        "surface-container": "#e7eeff",
-                        "surface-container-high": "#dee9ff",
-                        "surface-container-highest": "#d5e3ff",
-                        "on-surface": "#0c1c31",
-                        "on-surface-variant": "#42474d",
-                        "outline": "#73777e",
-                        "outline-variant": "#c2c7ce",
-                        "primary-container": "#143953",
-                        "on-primary-container": "#ffffff",
-                        "secondary-container": "#D45C84",
-                        "on-secondary-container": "#ffffff",
-                        "navy-50": "#EEF2F6",
-                        "navy-100": "#DAE2EB",
-                        "navy-200": "#B2C0D1",
-                        "ink-700": "#122236",
-                        "paper-50": "#F7F9FC",
-                        "paper-100": "#EFF2F7"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.5rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "margin-page": "32px",
-                        "space-10": "72px",
-                        "space-12": "128px",
-                        "space-1": "4px",
-                        "space-2": "8px",
-                        "space-6": "24px",
-                        "gutter": "24px",
-                        "space-8": "40px",
-                        "space-4": "16px"
-                    },
-                    "fontFamily": {
-                        "display-xl": ["Bricolage Grotesque", "sans-serif"],
-                        "body-md": ["Bricolage Grotesque", "sans-serif"],
-                        "label-eyebrow": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h1-mobile": ["Bricolage Grotesque", "sans-serif"],
-                        "lead": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h1": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h4": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h3": ["Bricolage Grotesque", "sans-serif"],
-                        "headline-h2": ["Bricolage Grotesque", "sans-serif"]
-                    },
-                    "fontSize": {
-                        "display-xl": ["76px", { "lineHeight": "0.98", "letterSpacing": "-0.025em", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "1.45", "fontWeight": "400" }],
-                        "label-eyebrow": ["12px", { "lineHeight": "1.45", "letterSpacing": "0.14em", "fontWeight": "700" }],
-                        "headline-h1-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "700" }],
-                        "lead": ["20px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "headline-h1": ["60px", { "lineHeight": "1.08", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "headline-h4": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
-                        "headline-h3": ["30px", { "lineHeight": "1.08", "fontWeight": "600" }],
-                        "headline-h2": ["42px", { "lineHeight": "1.1", "fontWeight": "600" }]
-                    }
-                }
-            }
-        }
-    </script>
+<link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/material-symbols-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="images/dr-kole-james-patient-thumbsup.webp" as="image" fetchpriority="high">
+<link rel="stylesheet" href="css/styles.css">
 <style>
         body {
             font-family: 'Bricolage Grotesque', sans-serif;
@@ -285,7 +208,7 @@
   <div class="relative lg:max-w-[440px] lg:ml-auto" data-reveal>
   <div class="hero-photo-panel absolute -inset-3 sm:-right-5 sm:-bottom-5 sm:left-6 sm:top-6 rounded-[40px]" aria-hidden="true"></div>
   <div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl ring-1 ring-white/40">
-  <img alt="Dr. Kishawn Kole-James giving a thumbs up with a young patient under the Superior Orthodontics sign in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_30%] hero-ken-burns" src="images/dr-kole-james-patient-thumbsup.jpg">
+  <img width="1200" height="1600" fetchpriority="high" alt="Dr. Kishawn Kole-James giving a thumbs up with a young patient under the Superior Orthodontics sign in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_30%] hero-ken-burns" src="images/dr-kole-james-patient-thumbsup.webp">
   </div>
   </div>
   </div>
@@ -382,7 +305,7 @@
 <!-- Braces for Kids -->
 <div class="group cursor-pointer">
 <div class="mb-5 overflow-hidden rounded-2xl aspect-[4/3] shadow-lg shadow-navy-200/40 ring-1 ring-navy-100/40 transition-ease-out group-hover:shadow-xl group-hover:shadow-navy-200/50 group-hover:-translate-y-1">
-<img alt="Close-up of traditional metal braces offered at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[40%_30%] group-hover:scale-105 transition-ease-out" src="images/metal-braces.webp">
+<img width="900" height="600" alt="Close-up of traditional metal braces offered at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[40%_30%] group-hover:scale-105 transition-ease-out" src="images/metal-braces.webp">
 </div>
 <h3 class="font-headline-h4 text-primary text-lg mb-2">Braces for Kids &amp; Teens</h3>
 <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Custom plans designed to fit their active lifestyles and unique growth patterns.</p>
@@ -391,7 +314,7 @@
 <!-- Clear Aligners -->
 <div class="group cursor-pointer relative">
 <div class="mb-5 overflow-hidden rounded-2xl aspect-[4/3] shadow-lg shadow-navy-200/40 ring-1 ring-navy-100/40 transition-ease-out group-hover:shadow-xl group-hover:shadow-navy-200/50 group-hover:-translate-y-1">
-<img alt="Patient holding clear aligners offered at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_30%] group-hover:scale-105 transition-ease-out" src="images/clear-aligners.webp">
+<img width="372" height="372" alt="Patient holding clear aligners offered at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_30%] group-hover:scale-105 transition-ease-out" src="images/clear-aligners.webp">
 </div>
 <h3 class="font-headline-h4 text-primary text-lg mb-2">Clear Aligners</h3>
 <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Discreet, removable, and effective way to straighten teeth without metal wires.</p>
@@ -400,7 +323,7 @@
 <!-- Adult Braces -->
 <div class="group cursor-pointer">
 <div class="mb-5 overflow-hidden rounded-2xl aspect-[4/3] shadow-lg shadow-navy-200/40 ring-1 ring-navy-100/40 transition-ease-out group-hover:shadow-xl group-hover:shadow-navy-200/50 group-hover:-translate-y-1">
-<img alt="Adult patient smiling with braces at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[65%_30%] group-hover:scale-105 transition-ease-out" src="images/braces-adult-smiling.jpg">
+<img width="1600" height="1068" alt="Adult patient smiling with braces at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[65%_30%] group-hover:scale-105 transition-ease-out" src="images/braces-adult-smiling.webp">
 </div>
 <h3 class="font-headline-h4 text-primary text-lg mb-2">Braces for Adults</h3>
 <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">It's never too late. Advanced ceramic and aesthetic options for a professional look.</p>
@@ -409,7 +332,7 @@
 <!-- Early Orthodontics -->
 <div class="group cursor-pointer">
 <div class="mb-5 overflow-hidden rounded-2xl aspect-[4/3] shadow-lg shadow-navy-200/40 ring-1 ring-navy-100/40 transition-ease-out group-hover:shadow-xl group-hover:shadow-navy-200/50 group-hover:-translate-y-1">
-<img alt="Teenage patient smiling with braces at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_35%] group-hover:scale-105 transition-ease-out" src="images/teen-braces-smiling.webp">
+<img width="1080" height="1080" alt="Teenage patient smiling with braces at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_35%] group-hover:scale-105 transition-ease-out" src="images/teen-braces-smiling.webp">
 </div>
 <h3 class="font-headline-h4 text-primary text-lg mb-2">Early Orthodontics</h3>
 <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Guidance for growing smiles. We recommend an initial screening by age 7.</p>
@@ -425,7 +348,7 @@
 <div class="relative group">
 <div class="absolute -inset-4 bg-secondary/5 rounded-[40px] transition-ease-out group-hover:bg-secondary/10"></div>
 <div class="relative rounded-[32px] overflow-hidden shadow-2xl">
-<img alt="Dr. Kishawn Kole-James, board-certified orthodontist, in the treatment room at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_18%]" src="images/office-treatment-room.jpg">
+<img width="1066" height="1600" alt="Dr. Kishawn Kole-James, board-certified orthodontist, in the treatment room at Superior Orthodontics in Metro Detroit, MI" class="w-full h-full object-cover object-[50%_18%]" src="images/office-treatment-room.webp">
 </div>
 </div>
 <div>
@@ -469,9 +392,9 @@
 <!-- Right column: interactive before/after slider (focal point) -->
 <div class="ba-slider relative w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl cursor-ew-resize focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-ba-slider role="slider" tabindex="0" aria-label="Reveal before and after patient smile. Use left and right arrow keys to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
 <!-- BEFORE image — PLACEHOLDER: replace with client photo -->
-<img class="ba-before absolute inset-0 w-full h-full object-cover" alt="Before treatment placeholder, awaiting approved patient photo at Superior Orthodontics" src="images/placeholder-before.svg">
+<img width="800" height="600" class="ba-before absolute inset-0 w-full h-full object-cover" alt="Before treatment placeholder, awaiting approved patient photo at Superior Orthodontics" src="images/placeholder-before.svg">
 <!-- AFTER image — PLACEHOLDER: replace with client photo -->
-<img class="ba-after absolute inset-0 w-full h-full object-cover" alt="After treatment placeholder, awaiting approved patient photo at Superior Orthodontics" src="images/placeholder-after.svg" style="clip-path: inset(0 50% 0 0);">
+<img width="800" height="600" class="ba-after absolute inset-0 w-full h-full object-cover" alt="After treatment placeholder, awaiting approved patient photo at Superior Orthodontics" src="images/placeholder-after.svg" style="clip-path: inset(0 50% 0 0);">
 <!-- Labels -->
 <div class="absolute top-5 left-5 bg-white text-primary text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md pointer-events-none">Before</div>
 <div class="absolute top-5 right-5 bg-secondary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md pointer-events-none">After</div>
@@ -634,37 +557,37 @@
 <div class="photo-carousel" data-carousel role="region" aria-label="Patient photos, scrollable" tabindex="0">
 <div class="carousel-slide">
 <div class="polaroid rounded-sm">
-<img alt="Two smiling Superior Orthodontics patients in front of the rainbow mirror with a pink gift bag" class="w-full aspect-[4/5] object-cover object-[50%_35%]" loading="lazy" src="images/patient-candid-rainbow.jpg">
+<img width="800" height="600" alt="Two smiling Superior Orthodontics patients in front of the rainbow mirror with a pink gift bag" class="w-full aspect-[4/5] object-cover object-[50%_35%]" loading="lazy" src="images/patient-candid-rainbow.webp">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">All smiles</p>
 </div>
 </div>
 <div class="carousel-slide">
 <div class="polaroid rounded-sm">
-<img alt="Dr. Kishawn Kole-James with a teen patient holding a Superior Orthodontics gift bag" class="w-full aspect-[4/5] object-cover object-[50%_25%]" loading="lazy" src="images/patient-candid-iceberg.jpg">
+<img width="768" height="1024" alt="Dr. Kishawn Kole-James with a teen patient holding a Superior Orthodontics gift bag" class="w-full aspect-[4/5] object-cover object-[50%_25%]" loading="lazy" src="images/patient-candid-iceberg.webp">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">Bag in hand</p>
 </div>
 </div>
 <div class="carousel-slide">
 <div class="polaroid rounded-sm">
-<img alt="Dr. Kishawn Kole-James with two patients giving thumbs up at Superior Orthodontics" class="w-full aspect-[4/5] object-cover object-[50%_30%]" loading="lazy" src="images/patient-candid-family.jpg">
+<img width="600" height="800" alt="Dr. Kishawn Kole-James with two patients giving thumbs up at Superior Orthodontics" class="w-full aspect-[4/5] object-cover object-[50%_30%]" loading="lazy" src="images/patient-candid-family.webp">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">The whole crew</p>
 </div>
 </div>
 <div class="carousel-slide">
 <div class="polaroid rounded-sm">
-<img alt="Dr. Kishawn Kole-James with a patient under the Superior Orthodontics sign" class="w-full aspect-[4/5] object-cover object-[50%_28%]" loading="lazy" src="images/patient-candid-friends.jpg">
+<img width="768" height="1024" alt="Dr. Kishawn Kole-James with a patient under the Superior Orthodontics sign" class="w-full aspect-[4/5] object-cover object-[50%_28%]" loading="lazy" src="images/patient-candid-friends.webp">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">Another visit in the books</p>
 </div>
 </div>
 <div class="carousel-slide">
 <div class="polaroid rounded-sm">
-<img alt="Dr. Kishawn Kole-James with two patients in front of the Live Your Best Smile neon sign" class="w-full aspect-[4/5] object-cover object-[50%_35%]" loading="lazy" src="images/patient-candid-neon.jpg">
+<img width="768" height="1024" alt="Dr. Kishawn Kole-James with two patients in front of the Live Your Best Smile neon sign" class="w-full aspect-[4/5] object-cover object-[50%_35%]" loading="lazy" src="images/patient-candid-neon.webp">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">The wall says it all</p>
 </div>
 </div>
 <div class="carousel-slide">
 <div class="polaroid rounded-sm">
-<img alt="Dr. Kishawn Kole-James with a patient holding the Superior Orthodontics pink gift bag" class="w-full aspect-[4/5] object-cover object-[50%_30%]" loading="lazy" src="images/patient-candid-giftbag.jpg">
+<img width="800" height="1066" alt="Dr. Kishawn Kole-James with a patient holding the Superior Orthodontics pink gift bag" class="w-full aspect-[4/5] object-cover object-[50%_30%]" loading="lazy" src="images/patient-candid-giftbag.webp">
 <p class="absolute bottom-3 left-0 right-0 text-center text-primary/70 text-sm font-semibold">The famous pink bag</p>
 </div>
 </div>
