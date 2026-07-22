@@ -94,13 +94,6 @@
         }
         .nav-link:hover::after { transform: scaleX(1); }
 
-        /* Before/After slider */
-        .ba-slider { position: relative; touch-action: none; -webkit-user-select: none; user-select: none; }
-        .ba-slider img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
-        .ba-after { transition: clip-path 0.05s linear; }
-        .ba-handle-line { box-shadow: 0 0 0 1px rgba(0,0,0,0.08); }
-        .ba-knob { transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .ba-slider:hover .ba-knob { transform: translate(-50%, -50%) scale(1.08); }
 
         /* Respect users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
@@ -371,42 +364,6 @@
                         Read full bio
                         <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </a>
-</div>
-</div>
-</div>
-</section>
-<!-- Before/After Smile Gallery — ASYMMETRIC FOCAL POINT with interactive slider -->
-<section class="py-24 md:py-32 bg-white relative overflow-hidden">
-<div class="w-full max-w-[1440px] mx-auto px-margin-page">
-<div class="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-16 items-center">
-<!-- Left column: copy -->
-<div class="max-w-md">
-<h2 class="font-headline-h2 text-headline-h2 text-primary mb-6">See the transformation.</h2>
-<p class="text-on-surface-variant text-lg leading-relaxed mb-8">Drag the slider to compare real patient smiles before and after their treatment at Superior Orthodontics.</p>
-<a class="inline-flex items-center text-secondary font-bold border-b-2 border-secondary pb-1 hover:gap-3 transition-ease-out gap-1" href="#schedule">
-                    See more transformations
-                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-</div>
-<!-- Right column: interactive before/after slider (focal point) -->
-<div class="ba-slider relative w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl cursor-ew-resize focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-secondary" data-ba-slider role="slider" tabindex="0" aria-label="Reveal before and after patient smile. Use left and right arrow keys to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-<!-- BEFORE image — PLACEHOLDER: replace with client photo -->
-<img width="800" height="600" class="ba-before absolute inset-0 w-full h-full object-cover" alt="Before treatment placeholder, awaiting approved patient photo at Superior Orthodontics" src="images/placeholder-before.svg" loading="lazy" decoding="async">
-<!-- AFTER image — PLACEHOLDER: replace with client photo -->
-<img width="800" height="600" class="ba-after absolute inset-0 w-full h-full object-cover" alt="After treatment placeholder, awaiting approved patient photo at Superior Orthodontics" src="images/placeholder-after.svg" style="clip-path: inset(0 50% 0 0);" loading="lazy" decoding="async">
-<!-- Labels -->
-<div class="absolute top-5 left-5 bg-white text-primary text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md pointer-events-none">Before</div>
-<div class="absolute top-5 right-5 bg-secondary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md pointer-events-none">After</div>
-<!-- Divider line + draggable knob -->
-<div class="ba-handle absolute top-0 bottom-0 ba-handle-line bg-white pointer-events-none" style="left: 50%; width: 2px; margin-left: -1px;">
-<div class="ba-knob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center ring-4 ring-primary/10">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -15 310 420" class="h-9 w-auto" aria-hidden="true">
-<path d="M230.66,124.98c-.97.27-.7-.25-.95-.53-10.12-11.48-23.07-17.65-36.14-25.11-5.93-27.86-17.81-52.45-46.61-61.77-56.16-18.19-114.58,19.42-113.06,79.71.82,32.68,20.29,44.5,48.87,53.26,53.41,16.36,133.53,16.11,146.09,85.69,9.34,51.73-19.09,103.7-66.7,124.79-62.49,27.68-135.53-5.12-156.3-69.79C-2.95,283.78,1.05,254.66.14,226.28c.96-.24.69.19.95.53,1.74,2.21,3.16,4.79,5.08,6.98,7.37,8.4,17.69,14.1,27.22,19.67.39,7.39-.21,14.84.07,22.23,1.21,31.84,17.33,59.69,46.34,73.72,52.81,25.53,114.84-11.74,117.5-69.99,1.6-34.93-16.9-48.9-47.52-58.36C88.67,202.19,2.7,204.54.57,118.5-2.33,1.16,150.91-44.76,212.91,53.73c13.46,21.38,18.89,46.04,17.75,71.25Z" style="fill:#143953;"/>
-<path d="M93.1,151.24c-11.51-2.72-23.06-6.7-32.84-13.43l-.12-.52c.28-19.74-2.56-37.37,8.61-54.8,28.66-44.7,97.34-26.95,101.91,25.16l-.02,63.17-32.87-9.23-.11-50.54c-1.53-17.96-22.11-27.35-36.41-15.67-4.44,3.63-8.14,10.65-8.14,16.45v39.39Z" style="fill:#D45C84;"/>
-<path d="M137.7,239.62c11.35,3.35,23.04,6.57,32.84,13.43l.13.52c-.66,15.63,2.17,30.95-3.88,45.77-22.13,54.24-102.41,40.79-106.64-16.97l.02-62.34,32.74,9.56.19,48.58c.29,18.19,20.92,29.16,35.81,17.89,4.08-3.09,8.79-10.62,8.79-15.8v-40.64Z" style="fill:#D45C84;"/>
-</svg>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -877,42 +834,6 @@
         }
     });
 
-    // Before/After image slider — pointer drag + keyboard (arrows / Home / End)
-    document.querySelectorAll('[data-ba-slider]').forEach(slider => {
-        const after = slider.querySelector('.ba-after');
-        const handle = slider.querySelector('.ba-handle');
-        let dragging = false;
-        let pct = 50;
-        const applyPct = (next) => {
-            pct = Math.max(0, Math.min(100, next));
-            after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-            handle.style.left = `${pct}%`;
-            slider.setAttribute('aria-valuenow', Math.round(pct));
-        };
-        const setFromX = (clientX) => {
-            const rect = slider.getBoundingClientRect();
-            applyPct(((clientX - rect.left) / rect.width) * 100);
-        };
-        slider.addEventListener('pointerdown', (e) => {
-            dragging = true;
-            slider.setPointerCapture(e.pointerId);
-            setFromX(e.clientX);
-        });
-        slider.addEventListener('pointermove', (e) => { if (dragging) setFromX(e.clientX); });
-        slider.addEventListener('pointerup', (e) => { dragging = false; try { slider.releasePointerCapture(e.pointerId); } catch (_) {} });
-        slider.addEventListener('pointercancel', () => { dragging = false; });
-        slider.addEventListener('keydown', (e) => {
-            const step = e.shiftKey ? 10 : 4;
-            switch (e.key) {
-                case 'ArrowLeft': case 'ArrowDown': applyPct(pct - step); break;
-                case 'ArrowRight': case 'ArrowUp': applyPct(pct + step); break;
-                case 'Home': applyPct(0); break;
-                case 'End': applyPct(100); break;
-                default: return;
-            }
-            e.preventDefault();
-        });
-    });
 </script>
 
 <script src="js/anime.min.js" defer></script>
